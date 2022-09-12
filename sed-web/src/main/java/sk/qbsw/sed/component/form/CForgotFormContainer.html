@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	<h3><wicket:message key="page.forgot.title"></wicket:message></h3>
+	<p>
+		<wicket:message key="page.forgot.subtitle"></wicket:message>
+	</p>
+	<form class="form-forgot" wicket:id="forgotForm">
+		<div wicket:id="forgotFeedback">[Feedback Panel]</div>
+		<fieldset>
+		<legend></legend>
+			<div class="form-group">
+				<span> 
+					<input type="text" class="form-control" wicket:id="login"> 
+				</span>
+			</div>
+			<div class="form-group">
+				<span class="input-icon">
+					<input type="email" name="email" class="form-control" wicket:id="email"> <em class="fa fa-envelope"></em> 
+				</span>
+			</div>
+			<div class="form-actions">
+				<a wicket:id="goBackButton" class="btn btn-light-grey go-back">
+					<em class="fa fa-chevron-circle-left"></em> <wicket:message key="page.content.btn.login"></wicket:message>
+				</a>
+				<button class="btn btn-green pull-right" type="submit" wicket:id="submitForgotBtn">
+					<wicket:message key="page.forgot.content.btn.submit"></wicket:message> 
+					<em class="fa fa-arrow-circle-right"></em>
+				</button>
+			</div>
+		</fieldset>
+	</form>
+</wicket:extend>
+</html>

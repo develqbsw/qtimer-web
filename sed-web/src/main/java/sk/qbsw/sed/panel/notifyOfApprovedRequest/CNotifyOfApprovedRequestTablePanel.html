@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	<div style="float:right; white-space: nowrap; display: inline-block;">
+		<input style="float:left;" wicket:id="search" aria-controls="sample_2" class="input-sm" type="text">
+	</div>
+	
+	<br><br>
+	
+	<div wicket:id="errorPanel"></div>
+	<div class="table-responsive">
+		<div class="dataTables_wrapper no-footer">
+			<div class="col-sm-2" style="float:right;"></div>		
+			<div wicket:id="grid" ></div>			
+		</div>
+	</div>
+</wicket:extend>
+</html>

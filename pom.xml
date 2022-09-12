@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sk.qbsw</groupId>
+  <artifactId>sed</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>Vykaz</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <timestamp>${maven.build.timestamp}</timestamp>
+    <maven.build.timestamp.format>yyyy-MM-dd HH:mm</maven.build.timestamp.format>
+
+    <!-- compiling projects -->
+    <compiler.version>2.3.2</compiler.version>
+    <java.version>1.8</java.version>
+    <javaee.version>6.0</javaee.version>
+    <war-builder.version>2.1.1</war-builder.version>
+
+    <!-- releasing -->
+    <release-plugin.version>3.0.4</release-plugin.version>
+
+    <!-- Wicket -->
+    <wicket.version>6.14.0</wicket.version>
+
+    <!-- spring -->
+    <spring.version>4.0.5.RELEASE</spring.version>
+    <spring.security.version>3.2.1.RELEASE</spring.security.version>
+
+    <!-- javax servlet -->
+    <servlet-api.version>2.5</servlet-api.version>
+
+    <!-- logging -->
+    <log4j.version>1.2.16</log4j.version>
+    <slf4j.version>1.5.8</slf4j.version>
+
+    <hibernate.version>4.3.11.Final</hibernate.version>
+
+    <!-- validation -->
+    <validation-api.version>1.0.0.GA</validation-api.version>
+    <hibernate-validator.version>4.3.0.Final</hibernate-validator.version>
+
+    <!-- GSON DEPENDENCY -->
+    <gson.version>2.3.1</gson.version>
+
+    <!-- joda time -->
+    <joda-time.version>2.1</joda-time.version>
+
+    <!-- junit -->
+    <junit.version>4.6</junit.version>
+
+    <!-- cglib -->
+    <cglib.version>2.2</cglib.version>
+
+  </properties>
+
+  <modules>
+    <module>sed-client</module>
+    <module>sed-core</module>
+    <module>sed-api</module>
+    <module>sed-web</module>
+  </modules>
+
+  <build>
+    <finalName>sed</finalName>
+    <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**</include>
+        </includes>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${compiler.version}</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <!--<optimize>true</optimize> -->
+          <debug>true</debug>
+          <compilerArgument>-Xlint:unchecked</compilerArgument>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>${release-plugin.version}</version>
+        <configuration>
+          <tagBase>https://svn.mycompany.com/repos/myapplication/releases</tagBase>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+    <!-- jboss -->
+    <repository>
+      <id>jboss-public-repository-group</id>
+      <name>JBoss Public Maven Repository Group</name>
+      <url>https://repository.jboss.org/nexus/content/groups/public-jboss/</url>
+      <layout>default</layout>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>never</updatePolicy>
+      </snapshots>
+    </repository>
+    <!-- google cload messaging repository -->
+    <repository>
+      <id>gcm-server-repository</id>
+      <url>https://github.com/slorber/gcm-server-repository/raw/master/releases/</url>
+    </repository>
+
+    <repository>
+      <id>oauth</id>
+      <name>OAuth Repository</name>
+      <url>http://oauth.googlecode.com/svn/code/maven</url>
+    </repository>
+  </repositories>
+</project>

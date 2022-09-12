@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+<wicket:extend>
+	<!-- BEGIN PAGE CONTENT-->
+
+			<div class="tabbable">
+				<ul class="nav nav-tabs" id="myTab2">
+					<li class="active">
+						<a id='tab-1' data-toggle="tab" href="#timesheetTable_tab" aria-expanded="true">
+							<wicket:message key="page.reports.label.title"/>							
+						</a>
+					</li>
+					<li class="">
+						<a id='tab-2' data-toggle="tab" href="#timesheet_tab" aria-expanded="false">
+							<span wicket:id="tabTitle"></span>
+						</a>
+					</li>
+					
+				</ul>
+				<div class="tab-content">
+					<div id="timesheetTable_tab" class="tab-pane fade active in">
+						<div wicket:id="timestampGenerateTable" ></div>
+					</div>
+					<div id="timesheet_tab" class="tab-pane fade">
+						<div wicket:id="timestampGenerateTab" ></div>
+					</div>
+				</div>
+			</div>
+
+	<!-- END PAGE CONTENT-->
+</wicket:extend>
+
+</html>

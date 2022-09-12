@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	<div class="panel-body">	
+		<div wicket:id="modalWindow" class="">
+			<div wicket:id="content"></div>
+		</div>
+		
+		<div wicket:id="modalWindowEdit">
+			<div wicket:id="contentEdit"></div>
+		</div>
+	
+		<div wicket:id="defaultTimestampModal" >
+			<div wicket:id="defaultTimestampModalPanel" ></div>
+		</div>
+		
+		<div class="form-group col-sm-13 form-horizontal" style="height:26px;" >
+			<div wicket:id="errorPanel"></div>	
+			
+			<div style="display:inline">	
+				<form wicket:id="filter" role="form" class="form-horizontal">
+
+						<div class=" col-lg-3 col-md-6 col-sm-12 margin-bottom-10">				
+							<div wicket:id="date" class="input-group">
+								<span class="input-group-addon">
+									<em class="fa fa-calendar"></em>
+								</span>			
+								<input wicket:id="dateInput" type="text" class="form-control" readonly/>
+							</div>
+						</div>
+						
+						<div class="col-lg-3 col-md-6 col-sm-12 form-group-item margin-bottom-10"  >	
+							  <div class="btn-group" data-toggle="buttons" wicket:id="dataInputType" ></div>
+						</div>
+						
+						<div  class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">
+							<div class="row">
+								
+								<label class="col-lg-3 col-md-3 col-sm-2 col-xs-2 control-label" ><wicket:message key="timestampGenerate.filterForm.duration"/></label>
+								<div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 form-div-nopadding">
+									<input class="form-control input-disabled" wicket:id="duration" type="text"></input>
+								</div>
+							
+								<label class="col-lg-3 col-md-3 col-sm-2 col-xs-2 control-label" ><wicket:message key="timestampGenerate.filterForm.remaining"/></label>
+								<div class="col-lg-3 col-md-3 col-sm-2 col-xs-2 form-div-nopadding">	
+									<input class="form-control input-disabled" wicket:id="remaining" type="text"></input>
+								</div>
+							</div>
+						</div>
+					
+						
+				</form>
+				
+				<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">
+				
+					<div>
+						<a wicket:id="timesheetMassEdit" name="timesheetMassEdit" class="btn btn-green" style="float: right;"><em class="fa fa-pencil"></em></a>
+					</div>
+								
+					<div class="form-group-item pull-right" style="margin-right: 5px;">
+						<a wicket:id="generateFromJIRA" class="btn btn-green"><img src="assets-sed/img/jira.png" alt="JIRA" height="14" width="14"></a>
+					</div>
+					
+					<div class="form-group-item pull-right" style="float:right; margin-right: 5px;">
+						<a wicket:id="confirm" class="btn btn-green"><em class="fa fa-check"></em></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="table-responsive" style="float:left;">
+			<div class="dataTables_wrapper no-footer">
+				<div class="dataTables_filter"></div>
+				
+				<div wicket:id="grid" ></div>			
+				
+			</div>
+		</div>
+	</div>
+	<script>
+	$(".btn-group > .btn> input:checked").parent().addClass("active");
+	$(".btn-group > .btn > label").css('cursor','pointer');
+	$(".btn-group > .btn > label").css('margin-bottom','0px');
+	$(".btn-group > .btn").click(function(){ 
+		$(this).addClass("active").siblings().removeClass("active");
+		$(this).removeClass("focus");
+	});
+	
+	</script>
+</wicket:extend>
+</html>

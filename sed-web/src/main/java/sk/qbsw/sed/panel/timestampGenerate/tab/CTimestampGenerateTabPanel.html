@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	<div class="panel-body">
+		<form class="form-horizontal" wicket:id="timestampGenerateForm">
+			
+			<div wicket:id="feedback"></div>
+			
+			<div class="form-group">
+				<label for="employee" class="col-sm-2 control-label"><wicket:message key="timesheet.user"/></label>
+				<div class="col-sm-9">
+					<input wicket:id="employee" class="form-control"></input>
+				</div>
+			</div>
+			
+			<!-- DURATION -->
+			<div wicket:id="durationInMinutesContainer">
+				<div class="form-group" >
+					<label class="col-sm-2 control-label"><wicket:message key="timestampGenerate.form.duration"/></label>
+					<div class="col-sm-3 input-group input-append bootstrap-timepicker" style="padding-left:15px;">
+						<input wicket:id="durationInMinutes" type="text" class="form-control time-picker-moreThan24" onchange="parseTimeDuration(this);" />
+						<span class="input-group-addon add-on"><em class="fa fa-clock-o"></em></span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- PERCENT -->
+			<div wicket:id="durationInPercentContainer">
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timestampGenerate.form.percent"/></label>
+					<div class="col-sm-3">
+						<input  wicket:id="durationInPercent" class="form-control" type="text"></input>
+					</div>
+				</div>
+			</div>
+			
+				<div class="form-group">
+				<div wicket:id="activityContainer">
+					<div class="form-group-item required">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.activity"/></label>
+						<div class="col-sm-7 controls">
+							<select wicket:id="activity" class="form-control search-select search-select-activities">
+								<optgroup wicket:id="myActivitiesLabel">
+									<wicket:container wicket:id="myActivity">
+										<option wicket:id="option"></option>
+									</wicket:container>
+								</optgroup>
+								<optgroup wicket:id="lastUsedActivitiesLabel">
+									<wicket:container wicket:id="lastUsedActivity">
+										<option wicket:id="option"></option>
+									</wicket:container>
+								</optgroup>
+								<optgroup wicket:id="allActivitiesLabel">
+									<wicket:container wicket:id="allActivity">
+										<option wicket:id="option"></option>
+									</wicket:container>
+								</optgroup>
+							</select>
+						</div>
+					</div>
+				</div>
+				
+				<label wicket:id="showInactiveActivitiesLabel" class="col-sm-1 control-label" ></label>
+				<div class="col-sm-1" style="margin-top: 5px;">
+					<input wicket:id="showInactiveActivities" class="grey-q-timer" type="checkbox"/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div wicket:id="projectContainer">
+					<div class="form-group-item required">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.project"/></label>
+						<div class="col-sm-7 controls">
+							<select wicket:id="project" class="form-control search-select search-select-projects">
+								<optgroup wicket:id="myProjectsLabel">
+									<wicket:container wicket:id="myProject">
+										<option wicket:id="option"></option>
+									</wicket:container>
+								</optgroup>
+								<optgroup wicket:id="lastUsedProjectsLabel">
+									<wicket:container wicket:id="lastUsedProject">
+										<option wicket:id="option"></option>
+									</wicket:container>
+								</optgroup>
+								<optgroup wicket:id="allProjectsLabel">
+									<wicket:container wicket:id="allProject">
+										<option wicket:id="option"></option>
+									</wicket:container>
+								</optgroup>
+							</select>	
+						</div>
+					</div>
+				</div>
+				
+				<label wicket:id="showInactiveProjectsLabel" class="col-sm-1 control-label" ></label>
+				<div class="col-sm-1" style="margin-top: 5px;">
+					<input wicket:id="showInactiveProjects" class="grey-q-timer" type="checkbox"/>
+				</div>
+			</div>
+
+			<!-- PHASE -->
+			<div wicket:id="phaseFieldContainer">
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timesheet.phase"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="phase" type="text" class="form-control"/>
+					</div>
+				</div>
+			</div>
+			
+			<!-- NOTE -->
+			<div class="form-group">
+				<label class="col-sm-2 control-label"><wicket:message key="timesheet.note"/></label>
+				<div class="col-sm-9">
+					<textarea wicket:id="note" rows="5" class="form-control"></textarea>
+				</div>
+			</div>
+			
+			<div wicket:id="outsideContainer">
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.outside"/></label>
+						<div class="col-sm-1" style="margin-top: 5px;">
+							<input wicket:id="outside" class="grey" type="checkbox"/>
+						</div>
+					</div>
+				</div>
+				
+			<div wicket:id="homeOfficeContainer">
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timesheet.homeOffice"/></label>
+					<div class="col-sm-1" style="margin-top: 5px;">
+						<input wicket:id="homeOffice" class="grey" type="checkbox"/>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-11">
+					<div class="form-actions pull-right">
+						<button type="submit" wicket:id="submitBtn" class="btn btn-green"><wicket:message key="button.save"/></button>
+						<button wicket:id="backButton" class="btn"><wicket:message key="button.cancel"/></button>
+					</div>
+				</div>
+			</div>
+		</form> <!-- END FORM-->
+	</div>
+	
+	<!-- END PAGE CONTENT-->
+</wicket:extend>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+</wicket:head>
+</head>
+<body>
+	<wicket:extend>
+		<div class="panel-body">
+			<form class="form-horizontal" wicket:id="activityRGroupForm">
+				<div wicket:id="feedback"></div>
+				
+				<div class="form-group">
+					<div class="col-sm-11"> 
+						<div class="pull-right">
+							<a wicket:id="edit" name="edit" class="btn btn-green"><em class="fa fa-pencil"></em></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.activityRestriction.restrictionName"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="name" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="activityRGroupForm.activityType"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="activityType" class="form-control"></select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.activityRestriction.projectGroup"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="projectGroup" class="form-control" ></select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="activityRGroupForm.validity"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="valid" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="activityRGroupForm.id"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="id" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">	
+					<div class="col-sm-11"> 
+						<div class="form-actions pull-right">
+							<button type="submit" wicket:id="submitBtn" class="btn btn-green"><wicket:message key="button.save"/></button>
+							<button wicket:id="backButton" class="btn"><wicket:message key="button.cancel"/></button>
+						</div>
+					</div>
+				</div>
+				
+			</form> <!-- END FORM-->
+		</div>
+
+		<!-- END PAGE CONTENT-->
+	</wicket:extend>
+</body>
+</html>

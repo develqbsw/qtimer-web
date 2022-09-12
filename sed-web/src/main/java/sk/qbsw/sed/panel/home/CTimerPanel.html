@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>
+	
+	<style>
+	
+		#timerPanel_div form {
+			height: 630px;
+		}
+	
+	</style>
+	
+</wicket:head>
+	<wicket:extend>	
+	
+		<div class="col-lg-4 col-md-6 homePanelHeigh">							
+			<div id="timerPanel_div">
+						
+				<form wicket:id="timesheetForm" class="panel panel-not-in-work panel-calendar">
+			
+					<div class="panel-heading border-light">
+						<h4 class="panel-title">Q-Timer</h4>
+						<div class="panel-tools">
+							<a class="panel-refresh" wicket:id="refreshButton" style="color: white !important;" >
+								<em class="fa fa-refresh"></em>
+							</a>					
+						</div>
+					</div>
+					<div class="panel-body">
+
+							<div class="row">
+								<div class="col-xs-6">
+									<div class="actual-date">
+										<span class="actual-day"></span>
+										<span class="actual-month"></span>
+									</div>
+								</div>
+								<div class="col-xs-6">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="clock-wrapper">
+												<div class="clock">
+													<div class="circle">
+														<div class="face">
+															<div id="hour" ></div>
+															<div id="minute" ></div>
+															<div id="second" ></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="weather text-light">
+												&nbsp;
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>			
+							
+							<div class="row" >													
+								<div class="col-sm-12" style="background-color: white;">								
+						
+										<div class="padding-5">
+							
+											<div class="form-group">	
+												<label class="control-label"><wicket:message key="timesheet.time"/></label>
+												<div class="input-group input-append bootstrap-timepicker">
+													<input type="text" wicket:id="time" class="form-control time-picker" onchange="parseTime(this);">
+													<span class="input-group-addon add-on"><em class="fa fa-clock-o"></em></span>
+												</div>
+											</div>
+																						
+											<div class="form-group">
+												<label class="control-label">
+													<wicket:message key="timesheet.activity"/>
+												</label>									
+												<select wicket:id="activity" class="form-control search-select" >
+													<optgroup wicket:id="myActivitiesLabel">
+														<wicket:container wicket:id="myActivity">
+															<option wicket:id="option"></option>
+														</wicket:container>
+													</optgroup>
+													<optgroup wicket:id="lastUsedActivitiesLabel">
+														<wicket:container wicket:id="lastUsedActivity">
+															<option wicket:id="option"></option>
+														</wicket:container>
+													</optgroup>
+													<optgroup wicket:id="allActivitiesLabel">
+														<wicket:container wicket:id="allActivity">
+															<option wicket:id="option"></option>
+														</wicket:container>
+													</optgroup>
+												</select>												
+											</div>
+											
+											<div class="form-group">
+												<label class="control-label">
+													<wicket:message key="timesheet.project"/>
+												</label>									
+												<select wicket:id="project" class="form-control search-select" >
+													<optgroup wicket:id="myProjectsLabel">
+														<wicket:container wicket:id="myProject">
+															<option wicket:id="option"></option>
+														</wicket:container>
+													</optgroup>
+													<optgroup wicket:id="lastUsedProjectsLabel">
+														<wicket:container wicket:id="lastUsedProject">
+															<option wicket:id="option"></option>
+														</wicket:container>
+													</optgroup>
+													<optgroup wicket:id="allProjectsLabel">
+														<wicket:container wicket:id="allProject">
+															<option wicket:id="option"></option>
+														</wicket:container>
+													</optgroup>
+												</select>												
+											</div>
+																						
+											<div class="form-group">
+												<label class="control-label">
+													<wicket:message key="timesheet.phase"/>
+												</label>									
+												<input type="text" wicket:id="timesheetPhase" class="form-control" />												
+											</div>		
+											
+											<div class="form-group">
+												<label class="control-label">
+													<wicket:message key="timesheet.note"/>
+												</label>									
+												<input type="text" wicket:id="timesheetNote" class="form-control" />												
+											</div>		
+										</div>
+
+								</div>									
+							</div>
+												
+							<div class="row">
+								<div class="col-sm-12">
+									<div class="pull-right" style="padding: 3px !important;"> <!-- SED-818 po pridani buttonu home office, sa nezmestili buttony vedla seba -->								
+										<button wicket:id="newButton" class="btn btn-sm btn-transparent-white"><wicket:message key="tooltip.button.new_action"/></button>	
+										<button wicket:id="changeButton" class="btn btn-sm btn-transparent-white"><wicket:message key="tooltip.button.change_action"/></button>		
+										<button wicket:id="actionButton" class="btn btn-sm btn-transparent-white"><span wicket:id="actionButtonLabel"></span></button>
+										<button wicket:id="homeOfficeButton" class="btn btn-sm btn-transparent-white"><span wicket:id="homeOfficeButtonLabel"></span></button>		
+										<button wicket:id="workOutsideButton" class="btn btn-sm btn-transparent-white"><span wicket:id="workOutsideButtonLabel"></span></button>			
+										<button wicket:id="alertnessButton" class="btn btn-sm btn-transparent-white"><span wicket:id="alertnessButtonLabel"></span></button>
+										<button wicket:id="interactiveWorkButton" class="btn btn-sm btn-transparent-white"><span wicket:id="interactiveWorkButtonLabel"></span></button>
+									</div>
+								</div>
+							</div>
+												
+					</div>
+				
+				</form> <!-- END FORM-->
+			</div>
+		</div>
+	
+	
+	</wicket:extend>
+		
+</html>

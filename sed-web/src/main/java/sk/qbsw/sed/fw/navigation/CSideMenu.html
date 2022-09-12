@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<body>
+	<wicket:panel>
+		<!-- start: SIDEBAR -->
+		<div class="main-navigation left-wrapper transition-left">
+			<div class="navigation-toggler hidden-sm hidden-xs">
+				<a href="#main-navbar" class="sb-toggle-left"> </a>
+			</div>
+			<div class="user-profile border-top padding-horizontal-10 block">
+				<div class="inline-block">
+					<img wicket:id="img" alt="img" style="max-width: 50px;"/>
+				</div>
+				<div class="inline-block">
+					<h5 class="no-margin"><wicket:message key="page.label.welcome"/></h5>
+					<h4 class="no-margin"><span wicket:id="userName"></span></h4>
+					<a class="btn user-options sb_toggle"> <em class="fa fa-cog"></em>
+					</a>
+				</div>
+			</div>
+			<!-- start: MAIN NAVIGATION MENU -->
+			<ul class="main-navigation-menu">
+				<li class="" wicket:id="sideMenuItems"><a href="javascript:;"
+					wicket:id="link" class="pageLoad"> <em class=""
+						wicket:id="image"></em> <span class="title" wicket:id="title"></span>
+						<span class="selected" wicket:id="selected"></span>
+						<em class="icon-arrow" wicket:id="arrow"> </em>
+				</a>
+					<div wicket:id="subMenu"></div></li>
+
+
+			</ul>
+			<!-- end: MAIN NAVIGATION MENU -->
+		</div>
+		<!-- end: SIDEBAR -->
+	</wicket:panel>
+</body>
+</html>

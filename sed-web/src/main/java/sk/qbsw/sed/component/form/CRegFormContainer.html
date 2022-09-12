@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+
+  <script src="assets/plugins/sweetalert/lib/sweet-alert.min.js"></script>
+  <link rel="stylesheet" href="assets/plugins/sweetalert/lib/sweet-alert.css">
+	<h3>
+		<wicket:message key="page.register.title.registration"></wicket:message>
+	</h3>
+	<p>
+		<wicket:message key="page.register.subtitle"></wicket:message>
+	</p>
+	<form class="form-register" action="index.html" wicket:id="regForm">
+		<div wicket:id="regFeedback">[Feedback Panel]</div>
+		<fieldset>
+		<legend></legend>
+			<div class="form-group">
+				<span>
+					<input type="text" class="form-control" wicket:id="orgName">
+				</span>
+			</div>
+			<div class="form-group">
+				<span>
+					<select class="form-control dropdown combobox" style="padding-left: 0;" wicket:id="legacyForm"></select> 
+				</span>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-10" style = "padding-left: 0; padding-right: 0;">
+					<span>
+						<input type="text" class="form-control" wicket:id="street"> 
+					</span>
+				</div>
+				<div class="col-sm-2"  style = "padding-left: 0; padding-right: 0;">
+					<span>
+						<input type="text" class="form-control" wicket:id="streetNo"> 
+					</span>
+				</div>
+			</div>
+			<div class="form-group" style = "clear: left; padding-top: 15px;">
+				<span>
+					<input type="text" class="form-control" wicket:id="city"> 
+				</span>
+			</div>
+			<div class="form-group">
+				<span>
+					<input type="text" class="form-control" wicket:id="zip"> 
+				</span>
+			</div>
+			<p>
+				<wicket:message key="page.register.title.manager"></wicket:message>
+			</p>
+			<div class="form-group">
+				<span>
+					<input type="text" class="form-control" wicket:id="name">
+				</span>
+			</div>
+			<div class="form-group">
+				<span>
+					<input type="text" class="form-control" wicket:id="surname">
+				</span>
+			</div>
+			<div class="form-group">
+				<span>
+					<input type="text" class="form-control" wicket:id="login">
+				</span>
+			</div>
+			<div class="form-group">
+				<span class="input-icon">
+					<input type="email" name="email" class="form-control" wicket:id="email"> <em class="fa fa-envelope"></em>
+				</span>
+			</div>
+			<div class="form-group">
+				<span class="input-icon">
+					<input type="password" name="password" class="form-control" wicket:id="password"> <em class="fa fa-lock"></em>
+				</span>
+			</div>
+			<div class="form-group">
+				<span class="input-icon">
+					<input type="password" name="password_again" wicket:id="repeatedPass" class="form-control"> <em class="fa fa-lock"></em>
+				</span>
+			</div>
+			<div class="form-group">
+				<div>
+					<label for="agreeLicence" class="checkbox-inline" >
+						<input wicket:id="agreeLicence" type="checkbox" class="grey remember" id="agreeLicence"	name="agreeLicence">
+					</label>
+					<a href="#" class="licence"><wicket:message key="page.register.content.agreeLicenceP1"></wicket:message> </a><wicket:message key="page.register.content.agreeLicenceP2"></wicket:message> 
+				</div>
+			</div>
+			<div class="form-group">
+				<div>
+					<label for="agreeQBSW" class="checkbox-inline" >
+						<input wicket:id="agreeQBSW" type="checkbox" class="grey remember" id="agreeQBSW" name="agreeQBSW">
+					</label>
+					<wicket:message key="page.register.content.agreeQBSW"></wicket:message>
+				</div>
+			</div>
+			
+			<div class="form-actions">
+				<wicket:message key="page.content.label.alreadyHaveAcc"></wicket:message>
+				<a class="go-back" href="#">
+					<wicket:message key="page.content.btn.login"></wicket:message>
+				</a>
+				<button class="btn btn-green pull-right" type="submit" wicket:id="submitRegBtn">
+					<wicket:message key="page.register.content.btn.register"></wicket:message>
+					<em class="fa fa-arrow-circle-right"></em>
+				</button>
+			</div>
+		</fieldset>
+	</form>
+</wicket:extend>
+</html>

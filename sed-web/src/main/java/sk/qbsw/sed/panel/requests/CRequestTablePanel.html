@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>
+<style>
+
+html body .ganttChart svg {
+	width: 500px;
+	height: 300px;
+	margin: 0px;
+}
+ 
+.chart {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+}
+ 
+.axis path,.axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+ 
+.bar-proposed {
+	fill: #f0ad4e;
+}
+ 
+.bar-approved {
+	fill: #669900;
+}
+ 
+.bar-succeeded {
+	fill: #5cb85c;
+}
+ 
+.bar-rejected {
+	fill: #d9534f;
+}
+
+.bar-weekend {
+	fill: #DDDDDD;
+}
+
+svg {
+	width: auto !important;
+	height: auto !important;
+}
+
+</style>
+
+<script>
+
+var gantt;
+
+$( document ).ready(function() {
+	try {
+		createGraph(tasks, taskNames, taskStatus);
+	} catch(e) {
+		// pociatocne nastavenie filtra nevratilo ziadne zaznamy
+	}
+});
+
+$( window ).resize(redraw);
+
+function redraw() {
+	try {
+		removeGraph();
+		createGraph(tasks, taskNames, taskStatus);
+	} catch(e) {
+		// pociatocne nastavenie filtra nevratilo ziadne zaznamy
+	}
+}
+
+function removeGraph() {
+	$("#chart").empty();
+}
+
+function createGraph(tasks, taskNames, taskStatus) {
+
+if (!tasks) {
+	return;
+}
+
+var format = "%d.%m";
+
+gantt = d3.gantt("chart", tasks).taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format);
+gantt(tasks, requestClickedCallback);
+};
+</script>
+<script wicket:id="graphStatesDataScript"></script>
+<script wicket:id="graphUsersDataScript"></script>
+<script wicket:id="graphRequestsDataScript"></script>
+<script wicket:id="requestClickedCallbackScript"></script>
+<link rel="stylesheet" type="text/css" href="assets/plugins/nvd3/nv.d3.css">
+</wicket:head>
+<wicket:extend>
+	 
+	 <div class="row" >
+	 
+		 <form wicket:id="filter" role="form">
+		 
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">	
+				<div wicket:id="date" class="input-group">
+					<span class="input-group-addon">
+						<em class="fa fa-calendar"></em>
+					</span>			
+					<input wicket:id="dateInput" type="text" class="form-control" readonly/>
+				</div>
+			</div>
+			
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >	
+				<select wicket:id="stateId" class="form-control"></select>				
+			</div>
+			
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >	
+				<select wicket:id="typeId" class="form-control"></select>				
+			</div>
+		</form> 
+	
+		<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">
+			<div wicket:id="chooseColumns" class="dropdown form-group-item pull-right" style="float:right; margin-right: 5px;">			
+				<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" ><em class="fa fa-cog"></em></a>
+				<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+					
+					<wicket:container wicket:id="columnComponents">
+				        <li>
+				        	<a wicket:id="showColumn">							
+							</a>				
+						</li>
+				    </wicket:container>
+				</ul>
+			</div>
+			<div wicket:id="chooseEmployees" style="float:right;"></div>
+			<a wicket:id="graphTableSwitch" class="btn btn-green" style="color:white; display: inline-block; float:right; margin-right: 5px;">
+				<em wicket:id="includeTodaySwitchIcon" class="fa fa-table"></em>
+			</a>	
+		</div>
+			
+	</div>
+	
+	<div wicket:id="errorPanel"></div>
+	<div class="table-responsive row">
+		<div class="dataTables_wrapper no-footer">		
+			
+			<div wicket:id="grid" ></div>			
+			
+		</div>
+	</div>
+	<div id = "ganttChartDiv">
+	    <script type="text/javascript" src="assets/js/d3.v3.min.js"></script>
+		<script type="text/javascript" src="assets/js/gantt-chart-d3v2_modified.js"></script>
+		<div wicket:id = "ganttChart">
+			<div id = "chart" style="width:100%; height:100%;">
+			</div>
+		</div>
+	</div>
+	
+</wicket:extend>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="sk" xmlns:wicket="http://wicket.apache.org">
+<head>
+<wicket:head>
+</wicket:head>
+</head>
+<body>
+	<wicket:border>
+		<div class="control-group" wicket:id="container">
+			<div class="control-label div-table">
+				<label class="form-label div-table-cell div-table-middle" wicket:id="label">
+					<wicket:container wicket:id="labelMessage" />
+					<span class="required" wicket:id="requiredMessage">*</span>
+				</label>
+			</div>
+			
+			<div class="controls input-icon" wicket:id="componentContainer">
+				<wicket:body />
+				<wicket:child />
+			</div>
+		</div>
+	
+	</wicket:border>
+</body>
+</html>

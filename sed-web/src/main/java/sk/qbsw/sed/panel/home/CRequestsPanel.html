@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>
+</wicket:head>
+	<wicket:extend>
+			<div class="panel panel-white requestsPanel">	
+				<div class="panel-heading border-light">
+				
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0px; ">
+						<h4 class="panel-title"><wicket:message key="requests.panel.title"></wicket:message></h4>
+					</div>		
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">				
+						<form style="position:relative; bottom:7px; left: 21px;">						
+							<input wicket:id="search" class="form-control" type="text">							
+						</form>							
+					</div>
+										
+				</div>
+				<div class="tabbable no-margin no-padding partition-dark">
+					<ul class="nav nav-tabs" id="myTab">
+						<li wicket:id="myTab" >
+							<a data-toggle="tab" href="#requests_tab_currentUser">
+								<wicket:message key="requests.panel.tabbedPanel.my"></wicket:message>
+							</a>
+						</li>
+						<li class="">
+							<a data-toggle="tab" href="#requests_tab_team">
+								<wicket:message key="requests.panel.tabbedPanel.team"></wicket:message>
+							</a>
+						</li>
+						<li wicket:id="favoriteTab">
+							<a data-toggle="tab" href="#requests_tab_favorite">
+								<wicket:message key="users.panel.tabbedPanel.favorite"></wicket:message>
+							</a>
+						</li>
+						<li class="">
+							<a data-toggle="tab" href="#requests_tab_all">
+								<wicket:message key="requests.panel.tabbedPanel.all"></wicket:message>
+							</a>
+						</li>
+					</ul>
+					<div class="tab-content partition-white">
+						<div id="requests_tab_currentUser" wicket:id="myTabContent" class="tab-pane padding-bottom-5" >
+							<div class="panel-scroll ps-container" wicket:id="listCurrentUser">
+								<table class="table table-striped table-hover">
+									<tbody>
+										<tr wicket:id = "requestsListCurrentUser" >
+											<td class="center col-md-1"></td>
+											<td class="col-md-11">
+												<div class="block space5">
+													<span wicket:id = "name"		class = "desc">  						</span>
+													<span wicket:id = "status"		class = "label" style = "float: right">	</span>
+												</div>
+												<span wicket:id = "type"		class = "text-small block">  	</span>
+												<span wicket:id = "timeInfo"	class = "text-small block text-light">  	</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="requests_tab_team" class="tab-pane padding-bottom-5">
+							<div class="panel-scroll ps-container"  wicket:id="listTeam">
+								<table class="table table-striped table-hover">
+									<tbody>
+										<tr wicket:id = "requestsListTeam" >
+											<td class="center col-md-1"></td>
+											<td class="col-md-11">
+												<div class="block space5">
+													<span wicket:id = "name"		class = "desc">  						</span>
+													<span wicket:id = "status"		class = "label" style = "float: right">	</span>
+												</div>
+												<span wicket:id = "type"		class = "text-small block">  	</span>
+												<span wicket:id = "timeInfo"	class = "text-small block text-light">  	</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="requests_tab_favorite" wicket:id="favoriteTabContent" class="tab-pane padding-bottom-5">
+							<div class="panel-scroll ps-container"  wicket:id="listFavorite">
+								<table class="table table-striped table-hover">
+									<tbody>
+										<tr wicket:id = "requestsListFavorite" >
+											<td class="center col-md-1"></td>
+											<td class="col-md-11">
+												<div class="block space5">
+													<span wicket:id = "name"		class = "desc">  						</span>
+													<span wicket:id = "status"		class = "label" style = "float: right">	</span>
+												</div>
+												<span wicket:id = "type"		class = "text-small block">  	</span>
+												<span wicket:id = "timeInfo"	class = "text-small block text-light">  	</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div id="requests_tab_all" class="tab-pane padding-bottom-5" >
+							<div class="panel-scroll ps-container" wicket:id="listAll">
+								<table class="table table-striped table-hover">
+									<tbody>
+										<tr wicket:id = "requestsListAll" >
+											<td class="center col-md-1"></td>
+											<td class="col-md-11">
+												<div class="block space5">
+													<span wicket:id = "name"		class = "desc">  						</span>
+													<span wicket:id = "status"		class = "label" style = "float: right">	</span>
+												</div>
+												<span wicket:id = "type"		class = "text-small block">  	</span>
+												<span wicket:id = "timeInfo"	class = "text-small block text-light">  	</span>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</wicket:extend>
+        
+</html>

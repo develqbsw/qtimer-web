@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+			<div class="dropdown form-group-item" style="float:right; margin-right: 5px;" wicket:id="employeeReportButtons">
+				<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" style="float: right;"><em class="fa fa-download"></em></a>
+				<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+				    <li>
+						<a wicket:id="monthEmployeeReport"  >
+							<span><wicket:message key="timesheet.monthEmployeeReport" /></span>
+						</a>
+					</li>
+					<li>
+						<a wicket:id="monthEmployeeReport.alsoNotConfirmed"  >
+							<span><wicket:message key="timesheet.monthEmployeeReport.alsoNotConfirmed" /></span>
+						</a>
+					</li>
+					<li>
+						<a wicket:id="weekEmployeeReport"  >
+							<span><wicket:message key="timesheet.weekEmployeeReport" /></span> 
+						</a>
+					</li>
+					<li>
+						<a wicket:id="weekEmployeeReport.alsoNotConfirmed"  >
+							<span><wicket:message key="timesheet.weekEmployeeReport.alsoNotConfirmed" /></span> 
+						</a>
+					</li>
+					<li>
+						<a wicket:id="accountantReport"  >
+							<span><wicket:message key="timesheet.accountantReport" /></span> 
+						</a>
+					</li>
+					<li>
+						<a wicket:id="accountantReport.alsoNotConfirmed"  >
+							<span><wicket:message key="timesheet.accountantReport.alsoNotConfirmed" /></span> 
+						</a>
+					</li>
+				</ul>
+			</div>
+</wicket:extend>
+</html>

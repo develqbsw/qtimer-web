@@ -1,0 +1,39 @@
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	
+	<div wicket:id="employeesModalWindow" class="">
+		<div wicket:id="employeesContent"></div>
+	</div>
+	
+		<div class="dropdown" style="float:right; margin-right: 5px;" wicket:id="manageEmployees">			
+			<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" style="float: right;"><i class="fa fa-group"></i></a>
+			<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+			    
+			    <li>
+					<a wicket:id="chooseEmployees" >
+						<span><wicket:message key="chooseEmployees.chooseEmployees" /></span> 
+					</a>
+					<a wicket:id="chooseSubordinateEmployees" >
+						<span><wicket:message key="chooseEmployees.chooseSubordinateEmployees" /></span> 
+					</a>
+					<a wicket:id="chooseAllEmployeesInvalid" >
+						<span><wicket:message key="chooseEmployees.chooseAllEmployeesInvalid" /></span> 
+					</a>
+					<a wicket:id="chooseOnlyMe" >
+						<span><wicket:message key="chooseEmployees.chooseOnlyMe" /></span> 
+					</a>
+					<a wicket:id="showEmployees" >
+						<span><wicket:message key="chooseEmployees.showEmployees" /></span> 
+					</a>
+					<a wicket:id="showTeam" >
+						<span><wicket:message key="chooseEmployees.showTeam" /></span> 
+					</a>
+					<a wicket:id="showAllEmployees" >
+						<span><wicket:message key="chooseEmployees.showAllEmployees" /></span> 
+					</a>
+				</li>	
+			</ul>
+		</div>
+	
+</wicket:extend>
+</html>

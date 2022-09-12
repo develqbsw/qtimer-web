@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>
+
+	<style>
+	
+ 		.requestsPanel .tabbable .panel-scroll  {
+ 			height: 369px !important;
+ 		}
+ 		
+ 		.withMessagesPanel .requestsPanel .tabbable .panel-scroll {
+ 		 	height: 202px !important;
+ 		}
+ 		
+ 		.requestsPanel .tabbable .panel-scroll:before  {
+ 			height: 100% !important;
+ 		}
+		
+		.messagesPanel .owl-wrapper {
+			height: 214px;
+		}
+		
+		.timerButtonsPanel .owl-wrapper {
+			height: 214px;
+		}
+
+		.owl-item .panel-body .space10 {
+			max-height: 46px;
+		}
+
+		@media screen and (-webkit-min-device-pixel-ratio:0) {
+			.owl-item .panel-body .space10 {
+				overflow: hidden;
+			    text-overflow: ellipsis;
+			    display: -webkit-box;
+			    -webkit-line-clamp: 2;
+			    -webkit-box-orient: vertical;
+			    max-height: none;
+			}
+		}
+		
+ 	</style>
+
+</wicket:head>
+
+<wicket:extend>
+	<div class="col-lg-4 col-md-6 homePanelHeight">
+		<div wicket:id="messagesPanel"></div>
+		<div wicket:id="timerButtonsPanel"></div>
+		<div wicket:id="requestsPanel"></div>
+	</div>
+</wicket:extend>
+</html>

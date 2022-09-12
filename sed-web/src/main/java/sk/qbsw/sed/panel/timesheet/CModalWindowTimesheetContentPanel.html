@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+		<form wicket:id="form" class="form-horizontal">
+			<div class="form-group-item " >
+				<label class="col-sm-3 control-label"><wicket:message key="timesheet.dialog.split"/></label>
+				<div class="col-sm-3 input-group input-append bootstrap-timepicker">
+					<input wicket:id="timeSplit" type="text" class="form-control time-picker" onchange="parseTime(this);" />
+				<span class="input-group-addon add-on"><em class="fa fa-clock-o"></em></span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-11"> 
+					<div class="form-actions pull-right">
+						<button wicket:id="btnOk" name="btnOk" class="btn btn-green"><wicket:message key="common.button.split"></wicket:message></button>
+						<button wicket:id="btnCancel" name="btnCancel" class="btn"><wicket:message key="button.cancel"></wicket:message></button>
+					</div>
+				</div>
+			</div> 
+		</form>
+</wicket:extend>
+</html>

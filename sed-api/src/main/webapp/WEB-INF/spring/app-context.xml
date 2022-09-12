@@ -1,0 +1,182 @@
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:cache="http://www.springframework.org/schema/cache"
+  xsi:schemaLocation="
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context-3.0.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+  http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+  http://www.springframework.org/schema/cache
+  http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
+
+  <context:property-placeholder location="classpath:config.properties" />
+  <import resource="db.xml" />
+
+  <context:component-scan base-package="sk.qbsw" />
+
+  <context:annotation-config />
+  <mvc:annotation-driven />
+
+  <!-- zapnutie aspektov -->
+  <aop:aspectj-autoproxy />
+  <bean id="logAspect" class="sk.qbsw.sed.api.rest.aspect.CApiRequestLogger" />
+  <bean id="procAspect" class="sk.qbsw.sed.api.rest.aspect.CApiRequestProcessor" />
+  <bean id="sedApiSecurityFilter" class="sk.qbsw.sed.api.security.CSedSecurityFilter" />
+
+  <bean id="ldapAuthenticationConfigurator" class="sk.qbsw.sed.server.ldap.CLdapAuthenticationConfigurator">
+    <property name="serverName" value="${ldap.url}" />
+    <property name="serverPort" value="${ldap.port}" />
+    <property name="useSslFlag" value="${ldap.useSSL}" />
+    <property name="userDn" value="${ldap.user}" />
+    <property name="userPassword" value="${ldap.password}" />
+    <property name="userSearchBaseDn" value="${ldap.base}" />
+    <property name="userSearchFilter" value="${ldap.userSearchFilter}" />
+
+    <property name="serverName2" value="${ldap.url2}" />
+    <property name="useSslFlag2" value="${ldap.useSSL2}" />
+    <property name="serverPort2" value="${ldap.port2}" />
+  </bean>
+
+  <bean id="jiraAuthenticationConfigurator" class="sk.qbsw.sed.server.jira.CJiraAuthenticationConfigurator">
+    <property name="baseUrl" value="${jira.base.url}" />
+    <property name="consumerKey" value="${jira.consumer.key}" />
+    <property name="consumerPrivateKey" value="${jira.consumer.private.key}" />
+  </bean>
+
+  <bean id="notificationDao" class="sk.qbsw.sed.server.dao.mail.CNotificationDao">
+    <property name="replyAddress" value="${smtp.reply_address}" />
+    <property name="environment" value="${smtp.environment}" />
+    <property name="environmentPrefix" value="${smtp.environmentPrefix}" />
+    <property name="velocityMacroPath" value="velocity/renew_password.vm" />
+    <property name="velocityMacroPathPasswdGenerated" value="velocity/new_password_generated.vm" />
+    <property name="velocityMacroPathNewUserWithoutPassword" value="velocity/new_user_without_password.vm" />
+    <property name="velocityMacroPathMissingEmployees" value="velocity/missing_employees.vm" />
+    <property name="velocityMacroPathMissingEmployeesByReason" value="velocity/missing_employees_by_reason.vm" />
+    <property name="velocityMacroPathUserRequestNotification" value="velocity/user_request_notification.vm" />
+    <property name="velocityMacroPathUserWarningNotification" value="velocity/user_warning_notification.vm" />
+  </bean>
+
+  <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+    <property name="host" value="${smtp.server}"></property>
+    <property name="port" value="${smtp.port}"></property>
+    <property name="javaMailProperties">
+      <props>
+        <prop key="mail.smtp.auth">false</prop>
+        <prop key="mail.smtp.connectiontimeout">5000</prop>
+        <prop key="mail.smtp.sendpartial">true</prop>
+        <prop key="mail.smtp.userset">true</prop>
+        <prop key="mail.mime.charset">UTF-8</prop>
+      </props>
+    </property>
+  </bean>
+
+  <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+    <property name="velocityProperties">
+      <value>
+        resource.loader=class
+        class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+        input.encoding=UTF-8
+        output.encoding=UTF-8
+      </value>
+    </property>
+  </bean>
+
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+    <property name="basenames" value="server_messages" />
+  </bean>
+
+  <bean id="systemInfoService" class="sk.qbsw.sed.server.service.system.CSystemInfoServiceImpl">
+    <property name="version" value="${system.version}" />
+  </bean>
+
+  <!-- SEND EMAIL EMPLOYEE ABSENCE -->
+  <bean id="automaticEmailSender" class="sk.qbsw.sed.server.service.system.CSendEmailAutomaticalyService" />
+
+  <bean id="automaticEmailSenderJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="automaticEmailSender" />
+    <property name="targetMethod" value="processService" />
+  </bean>
+
+  <bean id="cronEmailTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="automaticEmailSenderJob" />
+    <property name="cronExpression" value="0 0/5 * * * ?" />
+  </bean>
+
+  <!-- GENERATION TIMESTAMPS -->
+  <bean id="automaticTimestampGenerator" class="sk.qbsw.sed.server.service.system.CTimestampAutomaticGeneratorService" />
+
+  <bean id="automaticTimestampGeneratorJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="automaticTimestampGenerator" />
+    <property name="targetMethod" value="processService" />
+  </bean>
+
+  <bean id="cronGenerationTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="automaticTimestampGeneratorJob" />
+    <property name="cronExpression" value="0 0/5 * * * ?" />
+  </bean>
+
+  <!-- GET NAMESDAY -->
+  <bean id="refreshNamesdayCache" class="sk.qbsw.sed.server.service.system.CRefreshNamesdayCache" />
+
+  <bean id="refreshNamesdayCacheJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="refreshNamesdayCache" />
+    <property name="targetMethod" value="processService" />
+  </bean>
+
+  <bean id="cronNamesdayTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="refreshNamesdayCacheJob" />
+    <property name="cronExpression" value="0 1 0 * * ?" />
+  </bean>
+
+  <!-- EMPLOYEES STATUS -->
+  <bean id="refreshEmployeesStatus" class="sk.qbsw.sed.server.service.system.CRefreshEmployeesStatus" />
+
+  <bean id="refreshEmployeesStatusJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="refreshEmployeesStatus" />
+    <property name="targetMethod" value="processService" />
+  </bean>
+
+  <bean id="cronRefreshEmployeesStatusTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="refreshEmployeesStatusJob" />
+    <property name="cronExpression" value="0 0/5 * * * ?" />
+  </bean>
+
+  <!-- RECALCULATE VACATION NEW YEAR -->
+  <bean id="recalculateVacationNewYear" class="sk.qbsw.sed.server.service.system.CRecalculateVacationNewYearService" />
+
+  <bean id="recalculateVacationNewYearJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+    <property name="targetObject" ref="recalculateVacationNewYear" />
+    <property name="targetMethod" value="processService" />
+  </bean>
+
+  <bean id="recalculateVacationNewYearTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+    <property name="jobDetail" ref="recalculateVacationNewYearJob" />
+    <property name="cronExpression" value="0 1 0 1 1 ?" />
+  </bean>
+
+  <!-- SCHEDULER -->
+  <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    <property name="triggers">
+      <list>
+        <ref bean="cronEmailTrigger" />
+        <ref bean="cronGenerationTrigger" />
+        <ref bean="cronNamesdayTrigger" />
+        <ref bean="cronRefreshEmployeesStatusTrigger" />
+        <ref bean="recalculateVacationNewYearTrigger" />
+      </list>
+    </property>
+  </bean>
+
+
+  <!-- cache -->
+  <cache:annotation-driven />
+  <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager" p:cache-manager-ref="ehcache" />
+  <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" p:config-location="/WEB-INF/spring/ehcache.xml" p:shared="true" />
+
+</beans>

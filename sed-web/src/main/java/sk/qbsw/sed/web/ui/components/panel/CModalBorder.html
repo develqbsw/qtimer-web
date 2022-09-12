@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+</wicket:head>
+</head>
+<body>
+	<wicket:border>
+		<div wicket:id="modalWindow" class="modal modal-extended scrollable draggable">
+				<div class="modal-dialog" >
+					<div class="modal-content">
+						<div class="modal-header">
+						  <button wicket:id="closeBtn" class="close" type="button" data-dismiss="modal" aria-hidden="true">x</button> 
+						   <h4 class="modal-title" wicket:id="title"></h4>
+						</div>
+						<div class="modal-body" >
+							<wicket:body/>
+						</div>
+					</div>
+				</div>
+		</div> 
+		<script>
+		
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if($(event.target).attr('class') != null) {
+			    if ($(event.target).attr('class').indexOf("modal") != -1) {
+			    	var modal = event.target.id;
+			    	$("#" + modal).modal('hide');
+			    }
+			}
+		}
+		</script>
+	</wicket:border>
+</body>
+</html>

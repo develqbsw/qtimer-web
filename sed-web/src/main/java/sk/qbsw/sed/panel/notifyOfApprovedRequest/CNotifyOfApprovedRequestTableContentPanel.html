@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+<wicket:extend>
+	<!-- BEGIN PAGE CONTENT-->
+			 <div class="tabbable">
+				<ul class="nav nav-tabs" id="myTab2">
+					<li class="active">
+						<a id='tab-1' data-toggle="tab" href="#requestTable_tab" aria-expanded="true"  onclick="hideTab()">
+							<wicket:message key="page.reports.label.title"/>							
+						</a> 
+					</li>
+					<li class="">
+						<a id='tab-2' data-toggle="tab" href="#request_tab" aria-expanded="false"  style="display:none;">
+							<span wicket:id="tabTitle"></span>
+						</a>
+					</li>					
+				</ul>
+				<div class="tab-content">
+					<div id="requestTable_tab" class="tab-pane fade active in">
+						<div wicket:id="notifyTable" ></div>
+					</div>	
+					<div id="request_tab" class="tab-pane fade">
+						<div wicket:id="notify" ></div>
+					</div>		
+				</div>
+			</div>
+
+	<!-- END PAGE CONTENT-->
+	<script>
+	function hideTab() {
+		document.getElementById("tab-2").style.display = "none";
+	}
+	</script>
+</wicket:extend>
+
+
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+</wicket:head>
+</head>
+<body>
+	<wicket:extend>
+		<div class="panel-body">
+		
+			<div wicket:id="modalWindow" class="">
+				<div wicket:id="content"></div>
+			</div>
+		
+			<div wicket:id="defaultTimestampModal" >
+				<div wicket:id="defaultTimestampModalPanel" ></div>
+			</div>
+		
+			<form class="form-horizontal" wicket:id="timesheetForm">
+				<div wicket:id="feedback"></div>
+				
+				<div class="form-group">
+					<div class="col-sm-11"> 
+						<div class="pull-right">
+							<a wicket:id="edit" name="edit" class="btn btn-green"><em class="fa fa-pencil"></em></a>
+						</div>
+						<div class="pull-right" style="margin-right: 5px;">
+							<a wicket:id="split" name="split" class="btn btn-green"><em class="fa fa-clock-o"></em></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group required">
+					<label for="employee" class="col-sm-2 control-label"><wicket:message key="timesheet.user"/></label>
+					<div class="col-sm-9">
+						<select id="employee" wicket:id="employee" class="form-control search-select"></select>
+					</div>
+				</div>					
+					
+				<div class="form-group required">					
+					<label class="col-lg-2 col-md-2 col-sm-2 col-xs-12 control-label"><wicket:message key="timesheet.dateAndTime"/></label>
+					<div class = "col-lg-3 col-md-3 col-sm-3 col-xs-12" >				
+						<div class="form-group-item">
+							<div class="input-group">
+								<input wicket:id="date" id="date-fld" type="text" class="form-control date-picker"/>
+								<label class="input-group-addon" for="date-fld" style="cursor: pointer;">
+										<em class="fa fa-calendar"></em>
+								</label>
+							</div>						
+						</div>
+					</div>
+					
+					<div class = "col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+						<div class="form-group-item " >
+							<div class="input-group input-append bootstrap-timepicker">
+								<input wicket:id="timeFrom" type="text" class="form-control time-picker" onchange="parseTime(this);" />
+								<span class="input-group-addon add-on"><em class="fa fa-clock-o"></em></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class = "col-lg-3 col-md-3 col-sm-3 col-xs-12" >
+						<div class="form-group-item " >
+							<div class="input-group input-append bootstrap-timepicker" >
+								<input wicket:id="timeTo" type="text" class="form-control time-picker" onchange="parseTime(this);" />
+								<span class="input-group-addon add-on"><em class="fa fa-clock-o"></em></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<div wicket:id="activityContainer">
+						<div class="form-group-item required">
+							<label class="col-sm-2 control-label"><wicket:message key="timesheet.activity"/></label>
+							<div class="col-sm-7 controls">
+								<select id="activity" wicket:id="activity" class="form-control search-select search-select-activities">
+									<optgroup wicket:id="myActivitiesLabel">
+										<wicket:container wicket:id="myActivity">
+											<option wicket:id="option"></option>
+										</wicket:container>
+									</optgroup>
+									<optgroup wicket:id="lastUsedActivitiesLabel">
+										<wicket:container wicket:id="lastUsedActivity">
+											<option wicket:id="option"></option>
+										</wicket:container>
+									</optgroup>
+									<optgroup wicket:id="allActivitiesLabel">
+										<wicket:container wicket:id="allActivity">
+											<option wicket:id="option"></option>
+										</wicket:container>
+									</optgroup>
+								</select>	
+							</div>
+						</div>				
+					</div>
+					
+					<div wicket:id="showInactiveActivitiesContainer">			
+						<label wicket:id="showInactiveActivitiesLabel" class="col-sm-1 control-label"></label>
+						<div class="col-sm-1" style="margin-top: 5px;">
+							<input wicket:id="showInactiveActivities" class="grey-q-timer"  type="checkbox"/>
+						</div>		
+					</div>	
+				</div>
+				
+				<div class="form-group">
+					<div wicket:id="projectContainer">
+						<div class="form-group-item required">
+							<label class="col-sm-2 control-label"><wicket:message key="timesheet.project"/></label>
+							<div class="col-sm-7 controls">
+								<select id="project" wicket:id="project" class="form-control search-select search-select-projects">
+									<optgroup wicket:id="myProjectsLabel">
+										<wicket:container wicket:id="myProject">
+											<option wicket:id="option"></option>
+										</wicket:container>
+									</optgroup>
+									<optgroup wicket:id="lastUsedProjectsLabel">
+										<wicket:container wicket:id="lastUsedProject">
+											<option wicket:id="option"></option>
+										</wicket:container>
+									</optgroup>
+									<optgroup wicket:id="allProjectsLabel">
+										<wicket:container wicket:id="allProject">
+											<option wicket:id="option"></option>
+										</wicket:container>
+									</optgroup>
+								</select>	
+							</div>
+						</div>				
+					</div>
+					
+					<div wicket:id="showInactiveProjectsContainer">
+						<label wicket:id="showInactiveProjectsLabel" class="col-sm-1 control-label" ></label>
+						<div class="col-sm-1" style="margin-top: 5px;">
+							<input wicket:id="showInactiveProjects" class="grey-q-timer" type="checkbox"/>
+						</div>
+					</div>
+				</div>
+								
+				<div wicket:id="phaseFieldContainer">
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.phase"/></label>
+						<div class="col-sm-9">
+							<input wicket:id="phase" type="text" class="form-control"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timesheet.note"/></label>
+					<div class="col-sm-9">
+						<textarea wicket:id="note" rows="5" class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<div wicket:id="outsideContainer">
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.outside"/></label>
+						<div class="col-sm-1" style="margin-top: 5px;">
+							<input wicket:id="outsideWorkplace" class="grey" type="checkbox"/>
+						</div>
+					</div>
+				</div>
+				
+				<div wicket:id="homeOfficeContainer">
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.homeOffice"/></label>
+						<div class="col-sm-1" style="margin-top: 5px;">
+							<input wicket:id="homeOffice" class="grey" type="checkbox"/>
+						</div>
+					</div>
+				</div>
+				
+				<div wicket:id="requestReasonContainer">		
+					<div class="form-group">
+						<label class="col-sm-2 control-label"><wicket:message key="timesheet.reason"/></label>
+						<div class="col-sm-9">
+							<select wicket:id="requestReason" class="form-control"></select>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timesheet.status"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="status" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timesheet.changedBy"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="changedBy" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="timesheet.changeTime"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="changeTime" type="text" class="form-control"/>
+					</div>
+				</div>
+					
+				<div class="form-group">	
+					<div class="col-sm-11"> 
+						<div class="form-actions pull-right">
+							<button type="submit" wicket:id="submitBtn" class="btn btn-green"><wicket:message key="button.save"/></button>
+							<button wicket:id="backButton" class="btn"><wicket:message key="button.cancel"/></button>
+						</div>
+					</div>
+				</div>
+				
+			</form> <!-- END FORM-->
+		</div>
+		
+		<!-- END PAGE CONTENT-->
+	</wicket:extend>
+</body>
+</html>

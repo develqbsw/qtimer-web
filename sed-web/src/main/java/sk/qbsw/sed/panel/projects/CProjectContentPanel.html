@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+</wicket:head>
+</head>
+<body>
+	<wicket:extend>
+		<div class="panel-body">
+			<form class="form-horizontal" wicket:id="projectForm">
+				<div wicket:id="feedback"></div>
+								
+				<div class="form-group">
+					<div class="col-sm-11"> 
+						<div class="pull-right">
+							<a wicket:id="edit" name="edit" class="btn btn-green"><em class="fa fa-pencil"></em></a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectName"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="name" type="text" class="form-control"/>
+					</div>
+				</div>	
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectGroup"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="group" type="text" class="form-control"/>
+					</div>
+				</div>	
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectCode"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="code" type="text" class="form-control"/>
+					</div>
+				</div>				
+								
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectOrder"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="order" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectValid"/></label>
+					<div class="col-sm-1">
+						<input wicket:id="valid" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectDefault"/></label>
+					<div class="col-sm-1">
+						<input wicket:id="flagDefault" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectNote"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="note" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectChangeUser"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="changedBy" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="table.column.projectChangeTime"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="changeTime" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">	
+					<div class="col-sm-11"> 
+						<div class="form-actions pull-right">
+							<button type="submit" wicket:id="submitBtn" class="btn btn-green"><wicket:message key="button.save"/></button>
+							<button wicket:id="backButton" class="btn"><wicket:message key="button.cancel"/></button>
+						</div>
+					</div>
+				</div>
+				
+			</form> <!-- END FORM-->
+		</div>
+
+		<!-- END PAGE CONTENT-->
+	</wicket:extend>
+</body>
+</html>

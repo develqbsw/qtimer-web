@@ -1,0 +1,234 @@
+/*
+ * override temy
+ */
+.main-container {
+	margin-top: 0px !important;
+}
+#pageslide-left {
+	padding-top: 0px;	
+}
+.modal.scrollable .modal-body{
+	max-height: 420px;
+	overflow-y: auto;
+}
+
+.daterangepicker .ranges {
+	width: 180px !important;	
+}
+
+/* js tree */
+
+.jstree-leaf>a>i{
+	background-image: url("../img/tree_leaf.png")!important;
+	background-position: 0!important;
+/* 	margin-left: 4px!important; */
+}
+/* end js tree */
+
+.img-circle {
+	height: 50px !important;
+}
+
+.tabbable .panel-scroll {
+	height: 498px !important;
+}
+/*select 2*/
+.has-error a.select2-choice {
+  border-color: #B94A48 !important;
+}
+
+.homePanelHeight {
+	height: 650px;
+}
+
+.daterangepicker .ranges li:last-child {
+	display: none !important; 
+}
+
+form .required label:not(.input-group-addon):after {
+    color: #e6674a;
+    content: "*";
+    display: inline;
+}
+
+.page-header h1 small {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.imxt-a input {
+	font-size: 14px;
+	padding: 5px 4px !important;
+}
+
+.dropdown-menu > li > span {
+	display: block;
+	padding: 3px 20px;
+	clear: both;
+	white-space: nowrap;
+}
+
+.jstree-leaf > a > i:before, .jstree-themeicon:before {
+	content:  "\f007"; 
+    font-family: FontAwesome, sans-serif;
+    text-align: left;
+    font-style: normal;
+}
+
+.jstree-leaf > a > i, .jstree-themeicon {
+	background-image: none !important;
+	text-align: left;
+}
+
+.jstree-default .jstree-node {
+    background-image: none;
+}
+
+.jstree-default .jstree-open > .jstree-ocl {
+	background-position: -32px -4px;	
+}
+
+.jstree-default .jstree-closed > .jstree-ocl {
+	background-position: 0px -4px;	
+}
+
+.jstree-default .jstree-leaf > .jstree-ocl {
+    background: none;
+}
+
+.tree-folder-open:before, .tree-folder-other:before, .tree-folder-closed:before {
+    content: "\f007" !important; 
+    font-size: 15px !important;
+}
+
+.tree-content span {
+    font-style: normal;
+}
+
+.tree-folder-other:before, .tree-folder-open:before, .tree-folder-closed:before {
+	color: #8B91A0 !important;
+}
+
+textarea.form-control {
+	color: #8B91A0 !important;
+	border: 1px solid #E6E8E8;
+}
+
+textarea.form-control:hover {
+	border-color: #D2D7D7;
+}
+
+.ellipsisOverflow {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: inherit;
+}
+
+/* open-sans-300 - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'),
+       url('../fonts/open-sans-v13-latin-ext_latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+ */
+       url('../fonts/open-sans-v13-latin-ext_latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* open-sans-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'),
+       url('../fonts/open-sans-v13-latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+ */
+       url('../fonts/open-sans-v13-latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* open-sans-600 - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'),
+       url('../fonts/open-sans-v13-latin-ext_latin-600.woff2') format('woff2'), /* Chrome 26+, Opera 23+ */
+       url('../fonts/open-sans-v13-latin-ext_latin-600.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* open-sans-700 - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Open Sans Bold'), local('OpenSans-Bold'),
+       url('../fonts/open-sans-v13-latin-ext_latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+ */
+       url('../fonts/open-sans-v13-latin-ext_latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* open-sans-800 - latin-ext_latin */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'),
+       url('../fonts/open-sans-v13-latin-ext_latin-800.woff2') format('woff2'), /* Chrome 26+, Opera 23+ */
+       url('../fonts/open-sans-v13-latin-ext_latin-800.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+.q-timer-button{display:block;width:100px;height:100px;border-radius:50px;font-size:17px;padding-top:33px;text-align:center;font-family: Open Sans, sans-serif; font-weight: 200; line-height: 1; letter-spacing: -1px;}
+
+.panel-not-in-work {
+  background-color: #a7acb7;
+  position: relative;
+  color: #ffffff;
+}
+
+.panel-in-work {
+  background-color: #00a47e;
+  position: relative;
+  color: #ffffff;
+}
+
+.panel-change {
+  background-color: #c90000;
+  position: relative;
+  color: #ffffff;
+}
+
+.btn-q-timer-disabled {
+  background-color: #a7acb7;
+  color: #ffffff;
+}
+
+.namesday {
+	float: right;
+	position: relative;
+	font-family: Open Sans, sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	bottom: 17px;
+	letter-spacing: 0px;
+	line-height: 20px;
+	height: 20px;
+}
+
+.panel-work-outside {
+  background-color: #00b5ff;
+  position: relative;
+  color: #ffffff;
+}
+
+.form-div-nopadding {	
+	padding-left:0;
+	padding-right:0;
+}
+
+.invalidUser {
+	color:#CECECE;
+}
+
+input::-ms-clear {
+    display: none;
+}
+ 

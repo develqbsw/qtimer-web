@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+<wicket:extend>
+	<!-- BEGIN PAGE CONTENT-->
+	<a class="btn btn-green" wicket:id="changeDraggable" style="margin-left: 10px;"><span wicket:id="changeDraggableLabel"></span></a>
+	<a class="btn btn-green" wicket:id="showAlsoNotValid" style="margin-left: 10px;"><span wicket:id="showAlsoNotValidLabel"></span></a>
+
+	<div class="dropdown" style="float:right; margin-right: 5px;" wicket:id="exportExcel">			
+			<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" style="float: right;"><em class="fa fa-download"></em></a>
+			<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+			    <li>
+					<a wicket:id="generateEmployeesReport" >
+						<span><wicket:message key="common.button.exportEmployees" /></span> 
+					</a>
+				</li>	
+				<li>
+					<a wicket:id="generateWorkplaceReport" >
+						<span><wicket:message key="common.button.exportWorkplace" /></span> 
+					</a>
+				</li>	
+
+			</ul>
+	</div>
+		
+	<div class="row-fluid">
+		<div wicket:id="tree" class="treeContainer"></div>
+	</div>
+	<!-- END PAGE CONTENT-->
+</wicket:extend>
+
+</html>

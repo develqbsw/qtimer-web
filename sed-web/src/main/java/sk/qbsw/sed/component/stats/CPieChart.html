@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+<style>
+
+  #pieChart {
+    width: 267px;  
+  }
+  	
+  #pieChart svg {  
+	position: relative;
+	left: -30px;
+	width: 100%;
+	height: 267px;  
+  }  
+  
+  #pieChart .nvd3.nv-pie path {
+  	stroke: #894550 !important;
+  }
+  
+  #pieChart svg text {
+    font: 400 12px Arial, sans-serif;
+    fill: #ffffff !important;
+  }
+  
+  #pieChart .nvd3.nv-pie path {
+  	stroke: none !important;
+  }
+</style>
+
+<script>
+
+var pieChart;
+$( document ).ready(function() {
+	var data = getData_pieChart();
+	nv.addGraph(function() {
+	  var projectFullName;
+	  pieChart = nv.models.pieChart()
+	  	  .color(['#0071bc', '#29abe2', '#8cc63f', '#fcee21', '#fbb03b', '#ed1c24', '#c1272d', '#9e005d', '#93278f', '#662d91', '#1b1464', '#2e3192'])
+	      .x(function(d) { projectFullName = d.label; return d.label.substr(0,d.label.indexOf(' ')) })
+	      .y(function(d) { return d.value })
+	      .showLabels(false)
+	  	  .showLegend(false)
+	 	  .noData(getNoDataAvailableMessage());
+
+	  d3.select("#pieChart svg")
+	      .datum(data)
+	      .transition().duration(1200)
+	      .call(pieChart);
+	  
+	  pieChart.tooltipContent(function (project, length) { 
+    	  var hours 	= Math.floor(length);
+    	  var minutes   = Math.round((length - hours) * 60); 
+    	  if(minutes < 10) { minutes = '0' + minutes; }
+		  return  "<p class ='border-light' >" + projectFullName + " <br>" + hours + ":" + minutes + " </p>";  
+	  });
+	  
+	  nv.utils.windowResize(pieChart.update); 
+	  
+	  return pieChart;
+	});
+});
+
+function updatePieChart() {
+    var data = getData_pieChart(); 
+	d3.select('#pieChart svg') 
+	 		.datum(data) 
+	 		.transition() 
+	 		.duration(500) 
+	 		.call(pieChart); 
+
+	nv.utils.windowResize(pieChart.update);
+};
+
+</script>
+<script wicket:id="pieGraphDataScript"></script>
+	
+	<div class="panel panel-dark" style="background-color: #707788; background-image: none;">
+		<div class="panel-heading border-light">
+			<h4 class="panel-title"><wicket:message key="chart.pie.title"></wicket:message></h4>
+		</div>
+		<div class="panel-body">
+			<div class="row" style="display:flex;align-items:center;">
+				<div class="col-md-6">
+					<div id="pieChart">
+				 		 <svg></svg>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="space20 padding-5 border-bottom border-light">
+						<h4 wicket:id="maxValuePercentage1" class="pull-left no-margin space5"></h4>
+						<div class="clearfix"></div>
+						<span wicket:id="maxValueProjectName1" class="text-light ellipsisOverflow"></span>
+					</div>
+					<div class="space20 padding-5 border-bottom border-light">
+						<h4 wicket:id="maxValuePercentage2" class="pull-left no-margin space5"></h4>
+						<div class="clearfix"></div>
+						<span wicket:id="maxValueProjectName2" class="text-light ellipsisOverflow"></span>
+					</div>
+					<div class="space20 padding-5 border-bottom border-light">
+						<h4 wicket:id="maxValuePercentage3" class="pull-left no-margin space5"></h4>
+						<div class="clearfix"></div>
+						<span wicket:id="maxValueProjectName3" class="text-light ellipsisOverflow"></span>
+					</div>
+				</div>								
+			</div>
+		</div>
+	</div>
+</wicket:extend>
+</html>

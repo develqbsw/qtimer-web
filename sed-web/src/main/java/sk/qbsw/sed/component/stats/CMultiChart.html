@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+
+<script src="assets/plugins/jquery.sparkline/jquery.sparkline.js"></script>
+
+<style>
+
+  #barChart svg {  
+    height: 330px;  
+  }
+    
+  #barGraph_div .dropdown-toggle {
+  	cursor: pointer;
+  }
+  
+</style>
+
+<script>
+	var barChart;
+	var svg = "#barChart svg";
+
+	$( document ).ready(function() {
+		var data = getData_barChart();
+		
+		nv.addGraph(function () {
+			barChart = nv.models.multiChart()
+				.margin({top: 30, right: 60, bottom: 50, left: 70})
+				.showLegend(false) 
+		        .color(['#DFDFDD', '#FFB848', '#FF0000']);
+
+			barChart.bars1.stacked(true);
+			barChart.bars2.stacked(true);
+			
+			barChart.xAxis.tickFormat(function(d) {
+				return (d + '.');
+		 	});
+		    
+			barChart.yAxis1.tickFormat(function(d) {
+		 		var hours 	= Math.floor(d);
+		 		var minutes = Math.round((d - hours) * 60); 
+				if(minutes < 10) { minutes = '0' + minutes; }
+				return (hours + ':' + minutes);
+		 	}); 
+			
+			barChart.lines1.forceY([0, 20000000000000000]);
+			
+			barChart.lines1.padData(true);
+			
+		    // Set chart
+		    d3.select(svg)
+		        .datum(data)
+		 		.transition() 
+		 		.duration(0) 
+		        .call(barChart);
+		    
+		    // Auto resize chart on window resize
+		    nv.utils.windowResize(barChart.update);
+		 	barChart.tooltipContent(function (key, x, y, e, graph) { 
+		 		return  '<p>' + y + ' <br> </p>';  
+			}); 
+		    return barChart;
+		});
+
+
+	}); 
+	
+	function update() {
+	    var data = getData_barChart(); 
+	    
+		d3.select('#barChart svg') 
+		 		.datum(data) 
+		 		.transition() 
+		 		.duration(500) 
+		 		.call(barChart); 
+
+		nv.utils.windowResize(barChart.update);
+		
+		refresh($('#barGraph_div'));
+	};
+	
+	function fortmatTime(sparkline, options, fields) {
+		var min  = fields[0].value;
+		var hour = Math.floor(min / 60);
+		min = min % 60;
+		if (min < 10) { min = '0' + min;}
+		
+		return hour + ':' + min;
+	}
+
+</script>
+<script wicket:id="barGraphDataScript"></script>
+
+	<div class="panel panel-white" id="barGraph_div">
+		<div class="panel-heading border-light">
+			<h4 class="panel-title"><wicket:message key="chart.bar.title"></wicket:message></h4>
+			<ul class="panel-heading-tabs border-light">	
+				<li wicket:id="timeRangeButtons">
+					<div class="pull-right dropdown">
+						<a data-toggle="dropdown" class="dropdown-toggle" wicket:id="selectTimeRangeLabel"> <em class="fa fa-angle-down"></em></a>
+						<ul role="menu" class="dropdown-menu dropdown-light pull-right" >			    
+						    <li wicket:id="thisMonthLi">
+								<a wicket:id="thisMonthButton">
+									<span><wicket:message key="chart.bar.this-month"></wicket:message></span> 
+								</a>
+							</li>
+							<li wicket:id="thisWeekLi">
+								<a wicket:id="thisWeekButton">
+									<span><wicket:message key="chart.bar.this-week"></wicket:message></span> 
+								</a>
+							</li>
+							<li wicket:id="lastMonthLi">
+								<a wicket:id="lastMonthButton">
+									<span><wicket:message key="chart.bar.last-month"></wicket:message></span> 
+								</a>
+							</li>
+							<li wicket:id="lastWeekLi">
+								<a wicket:id="lastWeekButton">
+									<span><wicket:message key="chart.bar.last-week"></wicket:message></span> 
+								</a>
+							</li>	
+						</ul>
+					</div>
+				</li>
+				<li class="panel-tools" style = "display: flex; align-items: center; justify-content:center;">
+					<a class="panel-refresh" wicket:id="refreshButton">
+						<em class="fa fa-refresh"></em>
+					</a>
+				</li>
+			</ul>
+		</div>						
+		<div class="panel-body no-padding panel-in-work">
+			<div class="col-md-3 col-lg-2 no-padding">
+				<div class="partition-body padding-15">
+					<ul class="mini-stats">
+						<li class="col-md-12 col-sm-4 col-xs-4 no-padding">
+							<div class="values">
+								<a wicket:id="includeTodaySwitch" style="color:white; display: inline-block">
+									<strong><em wicket:id="includeTodaySwitchIcon" class="fa fa-eye"></em>&nbsp;<span wicket:id="sumDen">sum1</span></strong>
+									<wicket:message key="chart.bar.today"></wicket:message>
+								</a>
+							</div>
+						</li>
+						<li class="col-md-12 col-sm-4 col-xs-4 no-padding">
+							<div class="sparkline-bar spark-week" wicket:id="sparkline-week">
+							</div>
+							<script>
+									$('.spark-week').sparkline('html', { type:'bar', barColor:'#a5e5dd', tooltipFormatter: fortmatTime });
+							</script>
+							<div wicket:id="tyzdenDiv" class="values">
+								<strong><small>&empty;</small>&nbsp;<span wicket:id="priemerTyzden">priemer2</span><span>&nbsp;&nbsp;</span><span wicket:id="sumTyzden">sum2</span></strong>
+								<wicket:message key="chart.bar.week"></wicket:message>
+							</div>
+						</li>
+						<li class="col-md-12 col-sm-4 col-xs-4 no-padding">
+							<div class="sparkline-bar spark-month" wicket:id="sparkline-month">
+							</div>
+							<script>
+									$('.spark-month').sparkline('html', { type:'bar', barColor:'#a5e5dd', barWidth: '3px', tooltipFormatter: fortmatTime});
+							</script>
+							<div wicket:id="mesiacDiv" class="values">
+								<strong><small>&empty;</small>&nbsp;<span wicket:id="priemerMesiac">priemer3</span><span>&nbsp;&nbsp;</span><span wicket:id="sumMesiac">sum3</span></strong>
+								<wicket:message key="chart.bar.month"></wicket:message>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		
+			<div class="col-md-9 col-lg-10 no-padding partition-white">
+				<div class="partition">
+					<div class="height-300">
+						<div id="barChart" class="with-3d-shadow with-transitions">
+					  		<svg></svg>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</wicket:extend>
+</html>

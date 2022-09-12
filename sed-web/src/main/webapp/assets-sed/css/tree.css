@@ -1,0 +1,92 @@
+.tree-content [type="checkbox"] {
+    display: none !important;
+}
+
+.tree-content [type="checkbox"] + label {
+    display: inline-block;
+  	width: 21px;
+  	height: 21px;
+    background-image: url("../img/treeIcons.png");
+	background-position: -164px -4px;
+	margin-bottom: 0px !important;
+}
+
+.tree-content [type="checkbox"]:hover + label {
+  	background-position: -164px -36px;
+}
+
+.tree-content [type="checkbox"]:checked + label {
+  	background-position: -228px -4px;
+}
+
+.tree-content [type="checkbox"]:checked:hover + label {
+  	background-position: -228px -36px;
+}
+
+.tree-junction-expanded {
+	background-image: url("../img/treeIcons.png") !important;
+	background-position: -36px -4px !important;
+}
+
+.tree-junction-collapsed {
+	background-image: url("../img/treeIcons.png") !important;
+	background-position: -4px -4px !important;
+}
+
+.tree-folder-closed {
+    position: relative;
+    background-image: none !important;
+    vertical-align: top !important;
+}
+.tree-folder-closed:before {
+    position: absolute;
+    font-family: FontAwesome, sans-serif;
+    top: 0;
+    left: -5px;
+    content: "\f07b";
+    color: #e66b6b;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.tree-folder-open {
+    position: relative;
+    background-image: none !important;
+    vertical-align: top !important;
+    line-height: 20px;
+}
+.tree-folder-open:before {
+    position: absolute;
+    font-family: FontAwesome, sans-serif;
+    top: 0;
+    left: -5px;
+    content: "\f07c";
+    color: #e66b6b;
+	font-size: 18px;
+	margin-left: 10px;
+}
+
+.tree-folder-other {
+    position: relative;
+    background-image: none !important;
+    vertical-align: top !important;
+    line-height: 20px;
+    padding-left: 10px !important;
+}
+.tree-folder-other:before {
+	position: absolute;
+    font-family: FontAwesome, sans-serif;
+    top: 0;
+    left: -5px;
+    content: "\f15b";
+    color: #e66b6b;
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+.tree-label {
+	padding-left: 13px;
+	vertical-align: bottom;
+	line-height: 22px;
+	 color: #8B91A0;
+}

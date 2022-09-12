@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<mapping class="sk.qbsw.sed.server.model.codelist.CProject" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CActivity" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CActivityInitial" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CLegalForm" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CProject" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CRequestStatus" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CRequestType" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CUserType" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CHoliday" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CRequestReason" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CTimeSheetRecordStatus" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CTimeSheetRecordStatus" />
+		<mapping class="sk.qbsw.sed.server.model.codelist.CHomeOfficePermission" />
+
+		<mapping class="sk.qbsw.sed.server.model.domain.CClient" />
+		<mapping class="sk.qbsw.sed.server.model.domain.COrganizationTree" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CRequest" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CRequestForEmail" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CTimeSheetRecord" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CTmpTimeSheetRecord" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CUser" />		
+		<mapping class="sk.qbsw.sed.server.model.domain.CZone" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CUserPhoto" />
+		<mapping class="sk.qbsw.sed.server.model.domain.CEmploymentType" />
+
+		<mapping class="sk.qbsw.sed.server.model.params.CParameterEntity" />
+		<mapping class="sk.qbsw.sed.server.model.params.CLockDate" />
+		
+		<mapping class="sk.qbsw.sed.server.model.tree.org.CViewOrganizationTreeNode" />
+		
+		<mapping class="sk.qbsw.sed.server.model.restriction.CActivityInterval" />
+		<mapping class="sk.qbsw.sed.server.model.restriction.CActivityRestrictionGroup" />
+		<mapping class="sk.qbsw.sed.server.model.restriction.CXUserActivityRestriction" />		
+
+		<mapping class="sk.qbsw.sed.server.model.brw.CViewTimeStamp" />
+		<mapping class="sk.qbsw.sed.server.model.brw.CViewRequest" />
+		<mapping class="sk.qbsw.sed.server.model.brw.CViewEmployeesStatus" />
+		
+		<mapping class="sk.qbsw.sed.server.model.report.CViewWeekSheet" />
+		<mapping class="sk.qbsw.sed.server.model.report.CViewSummaryWeekSheet" />
+		<mapping class="sk.qbsw.sed.server.model.report.CViewMonthSheet" />
+		<mapping class="sk.qbsw.sed.server.model.report.CViewEmployees" />
+	</session-factory>
+</hibernate-configuration>

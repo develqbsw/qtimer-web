@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en"
+      lang="en">
+     
+  <head>
+    <title>SelectActivityPanel</title>
+  </head>
+  <body>
+  <wicket:panel>
+	<div style="padding-left: 1px; padding-right: 1px; border: 1px solid #88CFFF;">
+		<select wicket:id="activity" style="width: 100%;" class="search-select search-select-act">
+			<optgroup wicket:id="myActivitiesLabel">
+				<wicket:container wicket:id="myActivity">
+					<option wicket:id="option"></option>
+				</wicket:container>
+			</optgroup>
+			<optgroup wicket:id="lastUsedActivitiesLabel">
+				<wicket:container wicket:id="lastUsedActivity">
+					<option wicket:id="option"></option>
+				</wicket:container>
+			</optgroup>
+			<optgroup wicket:id="allActivitiesLabel">
+				<wicket:container wicket:id="allActivity">
+					<option wicket:id="option"></option>
+				</wicket:container>
+			</optgroup>
+		</select>
+	</div>
+  </wicket:panel>
+  </body>
+</html>

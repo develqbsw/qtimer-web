@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>
+
+	<style>
+	
+ 		.usersPanel .tabbable .panel-scroll  {
+ 			height: 536px !important;
+ 		}
+		
+		.listUnitHeaderPart {
+			float: left;
+			padding-right: 5px; 
+			display: flex; 
+			align-items: center;
+		}
+		
+		.mail-color {
+			color: DeepSkyBlue;
+		}
+		
+		.phone-color {
+			color: green;
+		}
+		
+		.office-color {
+			color: red;
+		}
+		
+ 	</style>
+
+</wicket:head>
+	<wicket:extend>
+		<div class="col-lg-4 col-md-12 homePanelHeight usersPanel">
+			<div class="panel panel-white">	
+				<div class="panel-heading border-light">
+								
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0px; ">
+						<h4 class="panel-title"><wicket:message key="users.panel.title"></wicket:message></h4>
+					</div>		
+					
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">				
+						<form style="position:relative; bottom:7px; left: 21px;">						
+							<input wicket:id="search" class="form-control" type="text">							
+						</form>							
+					</div>
+				
+				</div>
+			
+				<div class = "panel-body no-padding">
+					<div class="tabbable no-margin no-padding partition-dark">
+						<ul class="nav nav-tabs" id="myTab">
+							<li wicket:id="onlineTab">
+								<a data-toggle="tab" href="#users_tab_online">
+									<wicket:message key="users.panel.tabbedPanel.online"></wicket:message>
+								</a>
+							</li>
+							<li class="">
+								<a data-toggle="tab" href="#users_tab_team">
+									<wicket:message key="users.panel.tabbedPanel.team"></wicket:message>
+								</a>
+							</li>
+							<li class="" wicket:id="favoriteTab">
+								<a data-toggle="tab" href="#users_tab_favorite">
+									<wicket:message key="users.panel.tabbedPanel.favorite"></wicket:message>
+								</a>
+							</li>
+							<li class="">
+								<a data-toggle="tab" href="#users_tab_all">
+									<wicket:message key="users.panel.tabbedPanel.all"></wicket:message>
+								</a>
+							</li>
+						</ul>
+						<div class="tab-content partition-white" >
+							<div id="users_tab_online" wicket:id="onlineTabContent" class="tab-pane padding-bottom-5">
+								<div class="panel-scroll ps-container" wicket:id="onlineContainer">
+									<table class="table table-striped table-hover">
+										<tbody>
+											<tr wicket:id = "userListOnline" >
+												<td class="center" style="width:20%;"><img wicket:id = "icon" class="img-circle" alt="image"/></td>
+												<td>
+													<div>		
+														<div class = "listUnitHeaderPart">
+															<em class="fa fa-envelope-o mail-color" style = "float: left; padding-right: 5px;">							</em>
+															<span wicket:id = "email"	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="phoneDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-phone-square phone-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "phone" 	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="officeDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-map-marker office-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "office" 	class = "text-small block text-light" style = "float: left;">					</span>
+														</div>
+														<br>
+													</div>
+													<span wicket:id = "name" 	class = "text-large">					</span>
+													<div  wicket:id = "statusNotInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusMeetingDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusOutOfWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHomeOfficeDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusWorkBreakDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHolidayDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div id="users_tab_team" class="tab-pane padding-bottom-5" >
+								<div class="panel-scroll ps-container" wicket:id="teamContainer">
+									<table class="table table-striped table-hover">
+										<tbody>
+											<tr wicket:id = "userListTeam" >
+												<td class="center" style="width:20%;"><img wicket:id = "icon" class="img-circle" alt="image"/></td>
+												<td>
+													<div>		
+														<div class = "listUnitHeaderPart">
+															<em class="fa fa-envelope-o mail-color" style = "float: left; padding-right: 5px;">							</em>
+															<span wicket:id = "email"	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="phoneDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-phone-square phone-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "phone" 	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="officeDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-map-marker office-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "office" 	class = "text-small block text-light" style = "float: left;">					</span>
+														</div>
+														<br>
+													</div>
+													<span wicket:id = "name" 	class = "text-large">					</span>
+													<div  wicket:id = "statusNotInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusMeetingDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusOutOfWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHomeOfficeDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusWorkBreakDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHolidayDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div id="users_tab_favorite" wicket:id="favoriteTabContent" class="tab-pane padding-bottom-5" >
+								<div class="panel-scroll ps-container" wicket:id="favoriteContainer">
+									<table class="table table-striped table-hover">
+										<tbody>
+											<tr wicket:id = "userListFavorite" >
+												<td class="center" style="width:20%;"><img wicket:id = "icon" class="img-circle" alt="image"/></td>
+												<td>
+													<div>		
+														<div class = "listUnitHeaderPart">
+															<em class="fa fa-envelope-o mail-color" style = "float: left; padding-right: 5px;">							</em>
+															<span wicket:id = "email"	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="phoneDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-phone-square phone-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "phone" 	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="officeDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-map-marker office-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "office" 	class = "text-small block text-light" style = "float: left;">					</span>
+														</div>
+														<br>
+													</div>
+													<span wicket:id = "name" 	class = "text-large">					</span>
+													<div  wicket:id = "statusNotInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusMeetingDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusOutOfWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHomeOfficeDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusWorkBreakDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHolidayDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div id="users_tab_all" class="tab-pane padding-bottom-5">
+								<div class="panel-scroll ps-container" wicket:id="allContainer">
+									<table class="table table-striped table-hover">
+										<tbody>
+											<tr wicket:id = "userListAll" >
+												<td class="center" style="width:20%;"><img wicket:id = "icon" class="img-circle" alt="image"/></td>
+												<td>
+													<div>		
+														<div class = "listUnitHeaderPart">
+															<em class="fa fa-envelope-o mail-color" style = "float: left; padding-right: 5px;">							</em>
+															<span wicket:id = "email"	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="phoneDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-phone-square phone-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "phone" 	class = "text-small block text-light" style = "float: left; padding-right: 5px;"></span>
+														</div>
+														<div wicket:id="officeDiv" class = "listUnitHeaderPart">
+															<em class="fa fa-map-marker office-color" style = "float: left; padding-right: 5px;">						</em>
+															<span wicket:id = "office" 	class = "text-small block text-light" style = "float: left;">					</span>
+														</div>
+														<br>
+													</div>
+													<span wicket:id = "name" 	class = "text-large">					</span><a wicket:id="favourite" class="pull-right"></a>
+													<div  wicket:id = "statusNotInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusMeetingDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusInWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusOutOfWorkDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHomeOfficeDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusWorkBreakDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+													<div  wicket:id = "statusHolidayDiv" class = "text-small text-bold">
+														<em class="fa fa-dot-circle-o"></em>
+														<span wicket:id = "statusText">									</span>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<input wicket:id="webSocketAddress" type="hidden" id="webSocketAddress" />
+       
+		<!-- Script to utilise the WebSocket -->
+        <script type="text/javascript">                       
+            var webSocket;       
+           
+            function openSocket(){            
+                // Ensures only one connection is open at a time
+            	if(webSocket !== undefined && webSocket.readyState !== WebSocket.CLOSED){
+                	return;
+                }
+                
+                // Create a new instance of the websocket
+                webSocket = new WebSocket(document.getElementById('webSocketAddress').value);
+                 
+                /**
+                 * Binds functions to the listeners for the websocket.
+                 */
+                webSocket.onopen = function(event){
+                	console.log('webSocket onopen');
+                    // For reasons I can't determine, onopen gets called twice
+                    // and the first time event.data is undefined.
+                    if(event.data === undefined)
+                    	return;
+                };
+ 
+                webSocket.onmessage = function(event){
+                	console.log('webSocket onmessage: ' + event.data);
+                	
+					response = event.data;
+					response = response.split('*');
+					userId = response[0];
+					action = response[1];
+					
+					hideAllStatus(userId);
+					
+					if (document.getElementById("ONLINE_" + userId) != null) {
+						// ak nie je v tabe online tak nie je nikde, pravdepodobne mam nieco vyfiltrovane
+					
+						if ('NOT_IN_WORK' == action) {
+							document.getElementById("ONLINE_" + userId).style.display = "none";
+							document.getElementById("ONLINE_STATUS_NOT_IN_WORK_" + userId).style.display = "";
+							document.getElementById("ALL_STATUS_NOT_IN_WORK_" + userId).style.display = "";	
+							
+							if (document.getElementById("TEAM_STATUS_NOT_IN_WORK_" + userId) != null) {
+								document.getElementById("TEAM_STATUS_NOT_IN_WORK_" + userId).style.display = "";
+							}
+							
+							if (document.getElementById("FAVORITE_STATUS_NOT_IN_WORK_" + userId) != null) {
+								document.getElementById("FAVORITE_STATUS_NOT_IN_WORK_" + userId).style.display = "";
+							}
+							
+						} else if ('IN_WORK' == action) {						
+							document.getElementById("ONLINE_" + userId).style.display = "";
+							document.getElementById("ONLINE_STATUS_IN_WORK_" + userId).style.display = "";						
+							document.getElementById("ALL_STATUS_IN_WORK_" + userId).style.display = "";
+							
+							if (document.getElementById("TEAM_STATUS_IN_WORK_" + userId) != null) {
+								document.getElementById("TEAM_STATUS_IN_WORK_" + userId).style.display = "";
+							}
+							
+							if (document.getElementById("FAVORITE_STATUS_IN_WORK_" + userId) != null) {
+								document.getElementById("FAVORITE_STATUS_IN_WORK_" + userId).style.display = "";
+							}
+							
+						} else if ('MEETING' == action) {						
+							document.getElementById("ONLINE_" + userId).style.display = "none";
+							document.getElementById("ONLINE_STATUS_MEETING_" + userId).style.display = "";						
+							document.getElementById("ALL_STATUS_MEETING_" + userId).style.display = "";
+							
+							if (document.getElementById("TEAM_STATUS_MEETING_" + userId) != null) {
+								document.getElementById("TEAM_STATUS_MEETING_" + userId).style.display = "";
+							}
+							
+							if (document.getElementById("FAVORITE_STATUS_MEETING_" + userId) != null) {
+								document.getElementById("FAVORITE_STATUS_MEETING_" + userId).style.display = "";
+							}
+							
+						} else if ('OUT_OF_WORK' == action) {						
+							document.getElementById("ONLINE_" + userId).style.display = "none";
+							document.getElementById("ONLINE_STATUS_OUT_OF_WORK_" + userId).style.display = "";						
+							document.getElementById("ALL_STATUS_OUT_OF_WORK_" + userId).style.display = "";
+							
+							if (document.getElementById("TEAM_STATUS_OUT_OF_WORK_" + userId) != null) {
+								document.getElementById("TEAM_STATUS_OUT_OF_WORK_" + userId).style.display = "";
+							}
+							
+							if (document.getElementById("FAVORITE_STATUS_OUT_OF_WORK_" + userId) != null) {
+								document.getElementById("FAVORITE_STATUS_OUT_OF_WORK_" + userId).style.display = "";
+							}
+							
+						} else if ('WORK_BREAK' == action) {						
+							document.getElementById("ONLINE_" + userId).style.display = "";
+							document.getElementById("ONLINE_STATUS_WORK_BREAK_" + userId).style.display = "";						
+							document.getElementById("ALL_STATUS_WORK_BREAK_" + userId).style.display = "";
+							
+							if (document.getElementById("TEAM_STATUS_WORK_BREAK_" + userId) != null) {
+								document.getElementById("TEAM_STATUS_WORK_BREAK_" + userId).style.display = "";
+							}
+							
+							if (document.getElementById("FAVORITE_STATUS_WORK_BREAK_" + userId) != null) {
+								document.getElementById("FAVORITE_STATUS_WORK_BREAK_" + userId).style.display = "";
+							}
+							
+							
+						} else if ('HOME_OFFICE' == action) {
+							document.getElementById("ONLINE_" + userId).style.display = "none";
+							document.getElementById("ONLINE_STATUS_HOME_OFFICE_" + userId).style.display = "";						
+							document.getElementById("ALL_STATUS_HOME_OFFICE_" + userId).style.display = "";
+							
+							if (document.getElementById("TEAM_STATUS_HOME_OFFICE_" + userId) != null) {
+								document.getElementById("TEAM_STATUS_HOME_OFFICE_" + userId).style.display = "";
+							}
+							
+							if (document.getElementById("FAVORITE_STATUS_HOME_OFFICE_" + userId) != null) {
+								document.getElementById("FAVORITE_STATUS_HOME_OFFICE_" + userId).style.display = "";
+							}
+						}     
+					}
+                };
+ 
+                webSocket.onclose = function(event){
+                	console.log('webSocket onclose');
+                };
+            }
+            
+            function hideAllStatus(userId) {
+            	if (document.getElementById("ONLINE_STATUS_NOT_IN_WORK_" + userId) != null) {
+					document.getElementById("ONLINE_STATUS_NOT_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("ONLINE_STATUS_MEETING_" + userId).style.display = "none";
+					document.getElementById("ONLINE_STATUS_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("ONLINE_STATUS_OUT_OF_WORK_" + userId).style.display = "none";
+					document.getElementById("ONLINE_STATUS_WORK_BREAK_" + userId).style.display = "none";
+					document.getElementById("ONLINE_STATUS_HOLIDAY_" + userId).style.display = "none";
+					document.getElementById("ONLINE_STATUS_HOME_OFFICE_" + userId).style.display = "none";
+					
+					document.getElementById("ALL_STATUS_NOT_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("ALL_STATUS_MEETING_" + userId).style.display = "none";
+					document.getElementById("ALL_STATUS_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("ALL_STATUS_OUT_OF_WORK_" + userId).style.display = "none";
+					document.getElementById("ALL_STATUS_WORK_BREAK_" + userId).style.display = "none";
+					document.getElementById("ALL_STATUS_HOLIDAY_" + userId).style.display = "none";
+					document.getElementById("ALL_STATUS_HOME_OFFICE_" + userId).style.display = "none";
+            	}
+				
+				if (document.getElementById("TEAM_STATUS_NOT_IN_WORK_" + userId) != null) {
+					document.getElementById("TEAM_STATUS_NOT_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("TEAM_STATUS_MEETING_" + userId).style.display = "none";
+					document.getElementById("TEAM_STATUS_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("TEAM_STATUS_OUT_OF_WORK_" + userId).style.display = "none";
+					document.getElementById("TEAM_STATUS_WORK_BREAK_" + userId).style.display = "none";
+					document.getElementById("TEAM_STATUS_HOLIDAY_" + userId).style.display = "none";
+					document.getElementById("TEAM_STATUS_HOME_OFFICE_" + userId).style.display = "none";
+	            }
+	            
+				if (document.getElementById("FAVORITE_STATUS_NOT_IN_WORK_" + userId) != null) {
+					document.getElementById("FAVORITE_STATUS_NOT_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("FAVORITE_STATUS_MEETING_" + userId).style.display = "none";
+					document.getElementById("FAVORITE_STATUS_IN_WORK_" + userId).style.display = "none";
+					document.getElementById("FAVORITE_STATUS_OUT_OF_WORK_" + userId).style.display = "none";
+					document.getElementById("FAVORITE_STATUS_WORK_BREAK_" + userId).style.display = "none";
+					document.getElementById("FAVORITE_STATUS_HOLIDAY_" + userId).style.display = "none";
+					document.getElementById("FAVORITE_STATUS_HOME_OFFICE_" + userId).style.display = "none";
+	            }
+            }
+            
+            jQuery(document).ready(function() {
+				openSocket();
+			});          
+        </script>
+	</wicket:extend>
+        
+</html>

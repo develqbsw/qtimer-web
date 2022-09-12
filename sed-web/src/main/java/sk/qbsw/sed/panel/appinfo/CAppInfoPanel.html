@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+<wicket:extend>
+	<!-- BEGIN PAGE CONTENT-->
+	
+	<div id="appInfoPanel">
+		
+		<form class="form-horizontal" wicket:id="appInfoForm">
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="appinfo.version.label"/></label>
+					<div class="col-sm-9">
+						<label wicket:id="version" class="control-label"></label>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label wicket:id="func" class="col-sm-2 control-label"></label>
+					<div class="col-sm-9">
+						<label class="control-label"><wicket:message key="appinfo.functionalities.func0"/></label> <br>
+						<label class="control-label"><wicket:message key="appinfo.functionalities.func1"/></label> <br>
+						<label class="control-label"><wicket:message key="appinfo.functionalities.func2"/></label> <br>
+						<label class="control-label"><wicket:message key="appinfo.functionalities.func3"/></label> <br>
+						<label class="control-label"><wicket:message key="appinfo.functionalities.func4"/></label> <br>
+						<label class="control-label"><wicket:message key="appinfo.functionalities.func5"/></label>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label wicket:id="contact" class="col-sm-2 control-label"></label>
+					<div class="col-sm-9">
+						<label class="control-label"><wicket:message key="appinfo.contact.cont"/></label> <br>				
+						<a href="#" wicket:id="email"></a>				
+					</div>					
+				</div>
+				
+				<div class="form-group">
+					<label wicket:id="links" class="col-sm-2 control-label"></label>
+					<div class="col-sm-9" style="padding-top:0.5em">
+						<a href="faq.html" 		 target="_blank"><wicket:message key="appinfo.links.faq"/>	  </a><br>
+						<a href="changelog.html" target="_blank"><wicket:message key="appinfo.links.changes"/></a>
+					</div>					
+				</div>
+
+		</form>
+		<br>
+		
+	</div>
+
+	<!-- END PAGE CONTENT-->
+</wicket:extend>
+
+</html>

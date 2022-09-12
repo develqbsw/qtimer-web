@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+</wicket:head>
+</head>
+<body>
+<wicket:panel>
+	<div wicket:id="modalWindow" class="pnp-confirm-modal">
+		<div wicket:id="content"></div>
+	</div>
+	
+	<div wicket:id="timesheetModalWindow" class="pnp-confirm-modal">
+		<div wicket:id="timesheetContent"></div>
+	</div>
+	
+	<form  wicket:id="filter">
+		<table>
+			<tr>
+				<td width="400">
+					<wicket:message key="table.column.dateFrom" />
+					<input wicket:id="dateFrom" type="text" name="dateFrom"/>
+				</td>
+				<td style="text-align:right;">
+					<wicket:message key="table.column.activity" />:
+					<select wicket:id="activity"  name="activity"></select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<wicket:message key="table.column.dateTo" />
+					<input wicket:id="dateTo" type="text" name="dateTo"/>
+				</td>
+				<td style="text-align:right;">
+					<wicket:message key="table.column.phase" />:
+					<input wicket:id="phase" type="text"  name="phase"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+	
+	<div class="portlet box grey">
+		<div class="portlet-title">
+			<div class="caption">
+				<em class="icon-group"></em>
+				<wicket:message key="timesheet.title" />
+			</div>
+			<div class="actions">
+				<a wicket:id="add" name="add" class="btn green pnp-tools">
+					<em class="icon-plus"></em> <wicket:message key="button.add" /></a>
+				<a wicket:id="edit" name="edit" class="btn green pnp-tools">
+					<em class="icon-edit"><em> <wicket:message key="button.edit" /></a>
+				<a wicket:id="delete" name="delete" class="btn green pnp-tools">
+					<em class="icon-trash"></em> <wicket:message key="button.delete" /></a>
+				<a wicket:id="refresh" name="refresh" class="btn green pnp-tools">
+					<em class="icon-refresh"></em> Obnov</a>
+			</div>
+		</div>
+		<div class="portlet-body">
+			<table wicket:id="table" class="table table-bordered table-hover"></table>
+			<div wicket:id="errorPanel"></div>
+			<div wicket:id="paginationPanel"></div>
+		</div>
+	</div>
+</wicket:panel>
+</body>
+</html>

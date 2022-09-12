@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html
+	xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+
+<wicket:head>
+	<link rel="stylesheet" href="assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css">
+</wicket:head>
+
+<wicket:extend>
+	<!-- BEGIN PAGE CONTENT-->
+		
+	<div class="tab-content">
+	<div class="panel-body">
+		<div wicket:id="errorPanel"></div>
+		
+		<label wicket:id="lastLabel" style="padding-bottom:10px"></label>
+		
+		<form class="form-horizontal" wicket:id="absenceApprovalForm">
+						
+			<div class="form-group required">
+				<label class="col-sm-2 control-label"><wicket:message key="requests.label.date"/></label>
+				<div wicket:id="date" class="dateRangePicker input-group col-sm-2 required" style="padding-left:15px;">
+					<input class="form-control required" id="date-fld1" wicket:id="dateInput" />
+					<label class="input-group-addon" for="date-fld1" style="cursor: pointer;">
+							<em class="fa fa-calendar"></em>
+					</label>
+				</div>
+			</div>
+			
+			<div class="form-actions">
+				<button type="submit" wicket:id="button" class="btn btn-green"><em class="icon-ok"></em> <wicket:message key="absenceApproval.button"/></button>
+			</div>
+
+		</form>
+		
+	</div>			
+	</div>				
+
+	<!-- END PAGE CONTENT-->
+</wicket:extend>
+
+</html>

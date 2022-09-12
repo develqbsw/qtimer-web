@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+	<link rel="stylesheet" href="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css"> 
+</wicket:head>
+</head>
+<body>
+<wicket:extend>
+	<div wicket:id="errorPanel"></div>
+
+	<form wicket:id="projectsForm">
+		<br>
+		<h4><wicket:message key="upload.label.projects"/></h4>
+		<hr>
+		<div data-provides="fileupload" class="fileupload fileupload-new">
+			<span class="btn btn-file btn-light-grey"><em class="fa fa-folder-open-o"></em> <span class="fileupload-new"><wicket:message key="upload.selectFile"/></span><span class="fileupload-exists">Change</span>
+				<input type="file" wicket:id="projectsFileUpload">
+			</span>
+			<span class="fileupload-preview"></span>
+			<a data-dismiss="fileupload" class="close fileupload-exists float-none" href="#">&times;</a>
+			<button type="submit" class="btn btn-primary start">
+				<em class="glyphicon glyphicon-upload"></em>
+				<span><wicket:message key="upload.button"/></span>
+			</button>
+		</div>
+	</form>
+
+	<form wicket:id="activitiesForm">
+		<br>
+		<h4><wicket:message key="upload.label.activities"/></h4>
+		<hr>
+		<div data-provides="fileupload" class="fileupload fileupload-new">
+			<span class="btn btn-file btn-light-grey"><em class="fa fa-folder-open-o"></em> <span class="fileupload-new"><wicket:message key="upload.selectFile"/></span><span class="fileupload-exists">Change</span>
+				<input type="file" wicket:id="activitiesFileUpload">
+			</span>
+			<span class="fileupload-preview"></span>
+			<a data-dismiss="fileupload" class="close fileupload-exists float-none" href="#">&times;</a>
+			<button type="submit" class="btn btn-primary start">
+				<em class="glyphicon glyphicon-upload"></em>
+				<span><wicket:message key="upload.button"/></span>
+			</button>
+		</div>
+	</form>
+	
+	<form wicket:id="employeesForm">
+		<br>
+		<h4><wicket:message key="upload.label.employees"/></h4>
+		<hr>
+		<div data-provides="fileupload" class="fileupload fileupload-new">
+			<span class="btn btn-file btn-light-grey"><em class="fa fa-folder-open-o"></em> <span class="fileupload-new"><wicket:message key="upload.selectFile"/></span><span class="fileupload-exists">Change</span>
+				<input type="file" wicket:id="employeesFileUpload">
+			</span>
+			<span class="fileupload-preview"></span>
+			<a data-dismiss="fileupload" class="close fileupload-exists float-none" href="#">&times;</a>
+			<button type="submit" class="btn btn-primary start">
+				<em class="glyphicon glyphicon-upload"></em>
+				<span><wicket:message key="upload.button"/></span>
+			</button>
+		</div>
+	</form>
+</wicket:extend>
+</body>
+</html>

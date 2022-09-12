@@ -1,0 +1,1 @@
+ALTER TABLE t_user ADD COLUMN c_flag_jira_token_generation BOOLEAN NOT NULL DEFAULT TRUE;

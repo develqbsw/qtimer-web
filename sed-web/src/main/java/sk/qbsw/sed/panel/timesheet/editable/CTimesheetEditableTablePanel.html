@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	<div wicket:id="modalWindow" class="">
+		<div wicket:id="content"></div>
+	</div>
+	
+	<div wicket:id="modalWindowEdit" class="">
+		<div wicket:id="contentEdit"></div>
+	</div>
+	
+	<div class="row" >
+		
+		<form wicket:id="filter" role="form">
+			
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">				
+				<div wicket:id="date" class="input-group">
+					<span class="input-group-addon">
+						<em class="fa fa-calendar"></em>
+					</span>			
+					<input wicket:id="dateInput" type="text" class="form-control" readonly/>
+				</div>
+			</div>
+				
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >					
+				<select wicket:id="activityId" class="form-control"></select>
+			</div>
+			
+			<div  class="col-lg-3 col-md-6 col-sm-12 form-group-item margin-bottom-10">
+				<input wicket:id="search" aria-controls="sample_2" class="form-control" type="text">
+			</div>
+				
+		</form>
+		
+		<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">
+			<div wicket:id="chooseColumns" class="dropdown form-group-item pull-right" style="float:right; margin-right: 5px;">			
+				<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" ><em class="fa fa-cog"></em></a>
+				<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+					
+					<wicket:container wicket:id="columnComponents">
+				        <li>
+				        	<a wicket:id="showColumn">							
+							</a>				
+						</li>
+				    </wicket:container>
+				</ul>
+			</div>
+			
+			<div wicket:id="chooseEmployees"></div>
+			
+			<div wicket:id="generateReport"></div>
+
+			<div style="float:right; margin-right: 5px;">
+				<a wicket:id="timesheetMassEdit" name="timesheetMassEdit" class="btn btn-green" style="float: right;"><em class="fa fa-pencil"></em></a>
+			</div>
+			
+			<div wicket:id="confirmTimesheetRecords"></div>	
+		</div>
+			
+	</div>
+		
+	<div wicket:id="errorPanel"></div>	
+	<div class="table-responsive row">
+		<div class="dataTables_wrapper no-footer">
+					
+			<div wicket:id="grid" ></div>			
+			
+		</div>
+	</div>
+	
+</wicket:extend>
+</html>

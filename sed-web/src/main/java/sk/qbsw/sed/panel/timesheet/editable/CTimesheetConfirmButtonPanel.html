@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+	<div wicket:id="employeeConfirmOptions" class="dropdown" style="float:right;margin-right: 5px;" >			
+			<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" style="float: right;"><em class="fa fa-check"></em></a>
+			<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+					<li>
+						<a wicket:id="confirmTimesheetRecordsEmployee">
+						<span><wicket:message key="timesheet.confirmTimesheetRecordsEmployee"/></span>
+						</a>
+					</li>
+					<li>
+						<a wicket:id="cancelTimesheetRecordsEmployee">
+						<span><wicket:message key="timesheet.cancelTimesheetRecords"/></span>
+						</a>
+					</li>
+			</ul>
+	</div>
+	
+	<div wicket:id="superiorConfirmOptions" class="dropdown" style="float:right;margin-right: 5px;" >			
+			<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" style="float: right;"><em class="fa fa-check"></em></a>
+			<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+					<li>
+						<a wicket:id="confirmTimesheetRecordsSuperior">
+						<span><wicket:message key="timesheet.confirmTimesheetRecordsEmployee"/></span>
+						</a>
+					</li>
+					<li>
+						<a wicket:id="confirmTimesheetRecordsSuperiorOnlyEmployees">
+						<span><wicket:message key="timesheet.confirmTimesheetRecordsSuperiorOnlyEmployees"/></span> 
+						</a>
+					</li>
+					<li>
+						<a wicket:id="confirmTimesheetRecordsSuperiorAlsoEmployees">
+						<span><wicket:message key=" timesheet.confirmTimesheetRecordsSuperiorAlsoEmployees"/></span>
+						</a>
+					</li>
+					<li>
+						<a wicket:id="cancelTimesheetRecordsSuperior">
+						<span><wicket:message key="timesheet.cancelTimesheetRecords"/> </span>
+						</a>
+					</li>
+			</ul>
+	</div>
+		
+	<div wicket:id="adminConfirmOptions" class="dropdown" style="float:right;margin-right: 5px;" >			
+		<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" style="float: right;"><em class="fa fa-check"></em></a>
+		<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+				<li>
+					<a wicket:id="confirmTimesheetRecordsAdmin">
+					<span><wicket:message key="timesheet.confirmTimesheetRecordsAdminAlsoEmployees"/> </span>
+					</a>
+				</li>
+				<li>
+					<a wicket:id="confirmTimesheetRecordsAdminAlsoSuperior">
+					<span><wicket:message key="timesheet.confirmTimesheetRecordsAdminAlsoSuperior"/> </span> 
+					</a>
+				</li>
+				<li>
+					<a wicket:id="confirmTimesheetRecordsAdminAlsoEmployeesAlsoSuperrior">
+					<span><wicket:message key="timesheet.confirmTimesheetRecordsAdminAlsoEmployeesAlsoSuperrior"/></span> 
+					</a>
+				</li>
+				<li>
+					<a wicket:id="cancelTimesheetRecordsAdmin">
+					<span><wicket:message key="timesheet.cancelTimesheetRecords"/></span>
+					</a>
+				</li>
+		</ul>
+	</div>
+</wicket:extend>
+</html>

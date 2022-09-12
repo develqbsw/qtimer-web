@@ -1,0 +1,83 @@
+<html>
+<head>
+	<title>:: ${REQUEST_TITLE} </title>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+	<meta name="author" content="QBSW, a.s.">
+	<style>
+	 body { color: #000000; background-color: #FEFEFE; background-repeat: no-repeat;
+        	SCROLLBAR-ARROW-COLOR: #000000; SCROLLBAR-BASE-COLOR: #C0C0C0;
+	        font-family: Verdana, Arial, Helvetica, sans-serif;
+	        font-size: 10px; font-weight: normal;}
+
+	 td { font-family: Verdana, Arial, Helvetica, sans-serif;
+	      font-size: 10px; font-weight: normal; color: #000000; vertical-align: top;cursor:default;
+	      line-height:140%;}
+
+	 p { font-family: Verdana, Arial, Helvetica, sans-serif;
+	      font-size: 10px; font-weight: normal; color: #000000; vertical-align: top;cursor:default;
+	      line-height:100%;}
+
+	 a { color: #000000; text-decoration:none;font-weight: bold;
+	     font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; }
+
+	 a:hover { color: darkred; text-decoration:none; font-weight: bold;
+	           font-family: Verdana, Arial, Helvetica, sans-serif;
+	           font-size: 10px; }
+	</style>	
+</head>
+<body>
+
+<table style = "width: 320px; height: 100%; background-color: #F9F9F9;">
+<tr style="height: 20px;"><td colspan=2 style="background-color: lightgrey; font-weight: bold;">&nbsp; ${REQUEST_TITLE}</td></tr>
+
+<tr style="height:100%;"><td colspan=2>
+
+	<table>
+		<thead>
+			<tr><td></td><td></td></tr>
+		</thead>
+		<tbody>
+			<tr><td align="right" style="width: 120px">${LABEL_RQ_TYPE}  </td><td style="font-weight: bold; text-align: left;">${REQUEST_TYPE}</td></tr>
+
+			<tr><td align="right">&nbsp;</td><td>&nbsp;</td></tr>
+	
+				<tr><td align="right" style="width: 120px">${LABEL_EMPLOYEE} </td><td>&nbsp;${NAME_SURNAME}</td></tr>
+			#if ($REQUEST_TYPE_ID == 1)
+				#if ($HALF_DAY_REQUEST)
+				<tr><td align="right" style="width: 120px">${LABEL_HALFDAY} </td><td>&nbsp;${VALUE_YES}</td></tr>
+				#else
+				<tr><td align="right" style="width: 120px">${LABEL_HALFDAY} </td><td>&nbsp;${VALUE_NO}</td></tr>
+				#end
+			#end
+				<tr><td align="right" style="width: 120px">${LABEL_DATE} </td><td>&nbsp;${DATE_FROM} - ${DATE_TO}</td></tr>
+				<tr><td align="right" style="width: 120px">${LABEL_NUM_WORK_DAYS} </td><td>&nbsp;${WORK_DAYS_NUMBER}</td></tr>
+				<tr><td align="right" style="width: 120px">${LABEL_PLACE} </td><td>&nbsp;${PLACE}</td></tr>
+			#if ($REQUEST_TYPE_ID == 2 || $REQUEST_TYPE_ID == 5|| $REQUEST_TYPE_ID == 7) 
+				<tr><td align="right" style="width: 120px">${LABEL_REASON} </td><td>&nbsp;${REASON}</td></tr>
+			#end
+			#if ($REQUEST_TYPE_ID == 1) 
+				<tr><td align="right" style="width: 120px">${LABEL_REPLACEMENT}  </td><td>&nbsp;${RESPONSALIS_NAME}</td></tr>
+			#end
+			#if ($REQUEST_TYPE_ID == 1 || $REQUEST_TYPE_ID == 6 || $REQUEST_TYPE_ID == 7) 
+				<tr><td align="right" style="width: 120px">${LABEL_NOTE} </td><td>&nbsp;${NOTE}</td></tr>
+			#end
+				<tr><td align="right" style="width: 120px">${LABEL_RQ_OLD_STATUS} </td><td>&nbsp;${REQUEST_STATUS_OLD}</td></tr>
+				<tr><td align="right" style="width: 120px">${LABEL_RQ_NEW_STATUS} </td><td>&nbsp;${REQUEST_STATUS_CURRENT}</td></tr>
+			</tbody>
+		</table>
+	
+	${LINKS}
+	
+	</td></tr>
+	<tr><td colspan=2>
+	
+	<br>
+	
+	<table style="width: 100%; background-color: #F1F1F1; "><tr style="height: 9px;"><td style="font-size: 9px; font-weight: bold; width:190px; line-height:95%;">&nbsp; ${LABEL_SYSTEM_EES}</td><td style="font-size: 9px; font-weight: bold; text-align: right; line-height:95%; overflow: hidden; white-space: nowrap;">:: QBSW, a.s. © ${LABEL_YEAR} &nbsp; </td></tr>
+	</table>
+	
+	</td></tr>
+</table>
+
+</body>
+</html>

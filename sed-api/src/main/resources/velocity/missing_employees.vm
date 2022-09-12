@@ -1,0 +1,17 @@
+﻿<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	</head>
+	<body>
+		<h3>${LABEL_DATE} ${CHECK_DATE}</h3>
+        <br>
+        ${LABEL_LIST_ABSENTEES}<br><br>
+        #foreach($item in ${LIST_EMPLOYEES})
+    			$item <br>
+		#end
+        </br>
+        </br>
+		<p>${LABEL_BEST_REGARDS}</p>
+        <p>${LABEL_SYSTEM_EES}</p>
+	</body>
+</html>

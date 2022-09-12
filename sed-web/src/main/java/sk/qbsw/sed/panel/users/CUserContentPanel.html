@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<wicket:head>
+		<link rel="stylesheet" href="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+</wicket:head>
+</head>
+<body>
+	<wicket:extend>
+		<div class="panel-body">
+		
+			<div wicket:id="feedbackForPanel"></div>
+		
+			<form class="form-horizontal" wicket:id="userForm" >
+			
+			<div wicket:id="feedbackForForm"></div>
+			
+				<div class="form-group">
+					<div class="col-sm-11"> 
+						<div class="pull-right">
+							<a wicket:id="edit" name="edit" class="btn btn-green"><em class="fa fa-pencil"></em></a>
+						</div>
+					</div>
+				</div>
+				
+				<h4><wicket:message key="userDetail.systemData"/></h4>
+				<hr>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.login"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="login" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<wicket:enclosure child="photoUpload"> 
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.photoUpload"/></label>
+					<div class="col-sm-9">
+						<div data-provides="fileupload" class="fileupload fileupload-new">
+							<span class="btn btn-file btn-light-grey"><em class="fa fa-folder-open-o"></em> <span class="fileupload-new"><wicket:message key="upload.selectFile"/></span><span class="fileupload-exists">Change</span>
+								<input type="file" wicket:id="photoUpload" onchange="readURL(this);">
+							</span>
+							<span class="fileupload-preview"></span>
+							<a data-dismiss="fileupload" class="close fileupload-exists float-none" href="#">&times;</a>
+						</div>	
+					</div>
+					
+				</div>
+				</wicket:enclosure>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.photo"/></label>
+					<div class="col-sm-9">
+						<img style="max-width:100px;" alt="photo" wicket:id="photo"/>				
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.isValid"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="isValid" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.editTime"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="editTime" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.alertnesswork"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="allowedAlertnessWork" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.userType"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="userTypeString" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="client.detail.language"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="languageField" class="form-control"></select>
+					</div>
+				</div>
+	
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.tablerows"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="tableRowsField" class="form-control"></select>
+					</div>
+				</div>
+				
+				<br>
+				<h4><wicket:message key="userDetail.personalData"/></h4>
+				<hr>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.name"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="name" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.surname"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="surname" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.degTitle"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="degTitle" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.email"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="email" type="text" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.mobile"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="phoneMobile" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.birthDate"/></label>
+					<div class="col-sm-9">	
+						<div class="input-group">
+							<input wicket:id="birthDate" type="text" class="form-control date-picker" />
+							<label class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</label>
+						</div>				
+					</div>
+				</div>	
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.birthPlace"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="birthPlace" type="text" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.personalIdNumber"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="personalIdNumber" type="text" class="form-control"/>
+					</div>
+				</div>
+								
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.residentIdCardNum"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="residentIdCardNum" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.healthInsurComp"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="healthInsurComp" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.bankAccountNumber"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="bankAccountNumber" type="text" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.bankInstitution"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="bankInstitution" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.crn"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="crn" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.vatin"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="vatin" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<br>
+				<h4><wicket:message key="userDetail.permanentAddress"/></h4>
+				<hr>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="client.detail.street"/></label>
+					<div class="col-sm-7">
+						<input wicket:id="street" type="text" class="form-control"/>
+					</div>
+					<div class="col-sm-2">
+						<input wicket:id="streetNumber" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="client.detail.city"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="city" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="client.detail.zipCode"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="zip" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.contactCountry"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="country" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<br>
+				<h4><wicket:message key="userDetail.workingData"/></h4>
+				<hr>
+				
+				<div class="form-group required">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.employeeCode"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="employeeCode" type="text" class="form-control"/>
+					</div>
+				</div>
+								
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.phone"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="phoneFix" type="text" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.zone"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="zoneField" class="form-control"></select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.officeNumber"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="officeNumber" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.typeOfEmployment"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="typeOfEmploymentField" class="form-control"></select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.position"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="position" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.workStartDate"/></label>
+					<div class="col-sm-9">	
+						<div class="input-group">
+							<input wicket:id="workStartDate" type="text" class="form-control date-picker" />
+							<label class="input-group-addon">
+								<i class="fa fa-calendar"></i>
+							</label>
+						</div>					
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.workEndDate"/></label>
+					<div class="col-sm-9">	
+						<div class="input-group">
+							<input wicket:id="workEndDate" type="text" class="form-control date-picker" />
+							<label class="input-group-addon">
+								<em class="fa fa-calendar"></em>
+							</label>
+						</div>					
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.vacation"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="vacation" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.vacationNextYear"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="vacationNextYear" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.typeOfhomeOfficePerm"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="homeOfficePermissionField" class="form-control"></select>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.absentCheck"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="absentCheck" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.criminalRecords"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="criminalRecords" type="checkbox"/>
+					</div>
+				</div>
+				
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.recMedicalCheck"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="recMedicalCheck" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.multisportCard"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="multisportCard" type="checkbox"/>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.jiraTokenGeneration"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="jiraTokenGeneration" type="checkbox"/>
+					</div>
+				</div>
+
+				<br>
+				<h4><wicket:message key="userDetail.superiorDetails"/></h4>
+				<hr>
+				
+				<wicket:enclosure child="superiorIdField"> 
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.superior"/></label>
+					<div class="col-sm-9">
+						<select wicket:id="superiorIdField" class="form-control"></select>
+					</div>
+				</div>
+				</wicket:enclosure>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.superiorPos"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="superiorPosition" type="text" class="form-control"/>
+					</div>
+				</div>
+				
+				<br>
+				<h4><wicket:message key="userDetail.note"/></h4>
+				<hr>
+				
+				<div class="form-group">
+					<label class="col-sm-2 control-label"><wicket:message key="userDetail.note"/></label>
+					<div class="col-sm-9">
+						<input wicket:id="note" type="text" class="form-control"/>
+					</div>
+				</div>
+
+				<div class="form-group">	
+					<div class="col-sm-11"> 
+						<div class="form-actions pull-right">
+							<button type="submit" wicket:id="submitBtn" class="btn btn-green"><wicket:message key="button.save"/></button>
+							<button wicket:id="backButton" class="btn"><wicket:message key="button.cancel"/></button>
+						</div>
+					</div>
+				</div>
+			</form> <!-- END FORM-->
+			
+		</div>
+		
+	
+		<!-- END PAGE CONTENT-->
+	</wicket:extend>
+</body>
+</html>

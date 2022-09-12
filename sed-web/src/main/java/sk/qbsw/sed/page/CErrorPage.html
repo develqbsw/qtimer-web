@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+	<wicket:head>
+	  <!-- BEGIN PAGE LEVEL STYLES -->
+	  <!-- END PAGE LEVEL STYLES -->
+	  <title>Q-Timer | Error Page</title>
+		 <style>
+			  #background {background-image:url('assets/images/back-error-page.jpg');}  
+		</style>
+	</wicket:head>
+</head>
+<body>
+<wicket:extend>
+	<div class="error-full-page">
+		<img id="background" alt="background" src="" />
+		<div id="cholder">
+			<canvas id="canvas"></canvas>
+		</div>
+		
+		<!-- start: PAGE -->
+		<div class="container">
+			<div class="row">
+				<!-- start: 404 -->
+				<br><br><br><br>
+				<div class="error-details col-sm-6 col-sm-offset-3">
+				</div>
+				<div class="col-sm-12 page-error animated shake">
+					<div class="error-number text-white">
+						<wicket:message key="error.page.error"/>
+					</div>
+					<br><br>
+					<div class="error-details col-sm-6 col-sm-offset-3">
+						<h3><wicket:message key="page.login.title"/></h3>
+						<p>
+							<div wicket:id="errorText"></div>
+							<wicket:message key="error.page.text2"/><br>
+							
+							<a wicket:id="home" class="btn btn-red btn-return">
+								<wicket:message key="error.page.home"/>
+							</a>
+							<br>
+						</p>
+						<br><br>
+						<div class="copyright">
+							<wicket:message key="application.copyright"/>
+						</div>
+					</div>				
+				</div>
+			</div>		
+		</div>
+		<!-- end: PAGE -->
+		
+		<!-- start: MAIN JAVASCRIPTS -->
+		<!--[if lt IE 9]>
+		<script src="assets/plugins/respond.min.js"></script>
+		<script src="assets/plugins/excanvas.min.js"></script>
+		<script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js"></script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+		<script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
+		<!--<![endif]-->
+		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+		<script src="assets/plugins/TouchSwipe/jquery.touchSwipe.min.js"></script>
+		<script src="assets/js/main.js"></script>
+		<!-- end: MAIN JAVASCRIPTS -->
+	  
+	  <script src="assets/plugins/rainyday/rainyday.js"></script>
+		<script src="assets/js/utility-error404.js"></script>
+	 <script>
+			jQuery(document).ready(function() {
+				Main.init();
+				Error404.init();	
+				//document.getElementById("background").src = "assets/images/back-er.jpg";		
+			});
+	</script>
+	  <!-- END JAVASCRIPTS -->
+	</div>
+</wicket:extend>
+</body>
+</html>

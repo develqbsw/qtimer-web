@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend>
+
+<style>
+
+  #barChart svg {  
+    height: 690px;  
+  }
+    
+  #barGraph_div .dropdown-toggle {
+  	cursor: pointer;
+  }
+  
+</style>
+
+<script>
+	var barChart;
+	var svg = "#barChart svg";
+
+	$( document ).ready(function() {
+		var data = getData_barChart();
+		
+		nv.addGraph(function () {
+			barChart = nv.models.multiBarChart()
+		      .transitionDuration(350)
+		      .reduceXTicks(false)   //If 'false', every single x-axis tick label will be rendered.
+		      .rotateLabels(45)      //Angle to rotate x-axis labels.
+		      .showControls(false)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
+		      .groupSpacing(0.1)    //Distance between each group of bars.
+		      .stacked(true).showLegend(false)
+		      //.color(['#DFDFDD', '#FFB848'])
+		      .color(['#0071bc', '#29abe2', '#8cc63f', '#fcee21', '#fbb03b', '#ed1c24', '#c1272d', '#9e005d', '#93278f', '#662d91', '#1b1464', '#2e3192'])
+		      .noData(getNoDataAvailableMessage())
+		      .margin({top: 20, right: 20, bottom: 80, left: 50})
+		    ;
+		    
+			barChart.yAxis.tickFormat(function(d) {				
+				if (d < 0) {
+					var hours = Math.ceil(d);
+					var minutes = Math.round((d - hours) * -60);
+					if(minutes < 10) { minutes = '0' + minutes; }
+					if (hours == '0') {hours = '-' + hours;}
+					return (hours + ':' + minutes);
+				} else {
+					var hours = Math.floor(d);
+					var minutes = Math.round((d - hours) * 60);
+					if(minutes < 10) { minutes = '0' + minutes; }
+					return (hours + ':' + minutes);
+				}
+		 	}); 
+
+			barChart.xAxis.tickFormat(function(d) {
+				if (d.indexOf('empty_') === 0) {
+					return '';
+				}
+				if (d.indexOf('-') !== -1) {
+					return d.substring(0,d.indexOf('-') - 1);
+				}
+				return d;
+		 	}); 
+			
+		 	barChart.tooltipContent(function(key, x, y, e, graph) {
+		        return '<h3>' + key + '</h3>' +
+	               '<p>' +  y + ' - ' + e.point.x + '</p>'
+	      	}); 
+			
+		    d3.select(svg)
+		        .datum(data)
+		        .call(barChart);
+
+		    nv.utils.windowResize(barChart.update);
+
+		    return barChart;			
+			
+		});
+
+	});
+	
+	function update() {
+	    var data = getData_barChart(); 
+	    
+		d3.select(svg) 
+		 		.datum(data) 
+		 		.transition() 
+		 		.duration(500) 
+		 		.call(barChart); 
+
+		nv.utils.windowResize(barChart.update);
+		
+		refresh($('#barGraph_div'));
+	};
+	
+</script>
+<script wicket:id="barGraphDataScript"></script>
+
+	<div class="panel panel-white" id="barGraph_div">
+		<div class="panel-heading border-light">
+			<div class="row" >
+		
+				<form wicket:id="filter" role="form">
+					
+					<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">				
+						<div wicket:id="date" class="input-group">
+							<span class="input-group-addon">
+								<em class="fa fa-calendar"></em>
+							</span>			
+							<input wicket:id="dateInput" type="text" class="form-control" readonly/>
+						</div>
+					</div>
+					
+					<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >					
+						<select wicket:id="projectId" class="form-control"></select>
+					</div>
+					
+					<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >					
+						<select wicket:id="activityId" class="form-control"></select>
+					</div>
+						
+				</form>
+				
+				<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10">						
+				
+					<div wicket:id="showOptions" class="dropdown form-group-item pull-right" >			
+						<a data-toggle="dropdown" class="btn btn-green dropdown-toggle" ><em class="fa fa-cog"></em></a>
+						<ul class="dropdown-menu dropdown-light pull-right" role="menu">
+							
+							<li>
+								<a wicket:id="showProjectActivity" >
+								</a>
+							</li>
+							
+							<li>
+								<a wicket:id="showProjectEmployee" >
+								</a>
+							</li>
+							
+							<li>
+								<a wicket:id="showEmployeeProject" >			
+								</a>
+							</li>	
+							
+							<li>
+								<a wicket:id="showEmployeeActivity" >
+								</a>
+							</li>	
+							
+							<li>
+								<a wicket:id="showActivityEmployee" >
+								</a>
+							</li>
+							
+							<li>
+								<a wicket:id="showActivityProject" >
+								</a>
+							</li>
+							
+						</ul>
+					</div>
+				
+					<div wicket:id="chooseEmployees"></div>
+					
+				</div>
+						
+			</div>
+			
+		</div>						
+		<div class="panel-body">		
+			<div class="col-md-12 col-lg-12 no-padding partition-white">
+				<div class="partition">
+					<div id="barChart" class="with-3d-shadow with-transitions">
+				  		<svg></svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</wicket:extend>
+</html>

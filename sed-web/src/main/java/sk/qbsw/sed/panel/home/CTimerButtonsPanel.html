@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>
+
+	<style>
+	
+		#timerButtons a, #timerButtons .q-timer-button {
+			margin-left:  8px;
+			margin-right: 8px;
+		}
+		
+	</style>
+
+</wicket:head>
+	<wicket:extend>
+		<div class="panel">
+			<div id="timerButtons" style="min-height:147px !important; display: flex; align-items: center; justify-content:center; height:1px;"> <!-- height musi byt nastavene, pretoze IE inak nevie spravne vycentrovat komponenty, ktore maju nastavene len min-height. -->
+
+				<a wicket:id="breakButton" style="float: left;"><span wicket:id="breakButtonLabel"></span></a>
+				<a wicket:id="actionButton" style="float: left;"><span wicket:id="actionButtonLabel"></span></a>
+				<a wicket:id="workOutsideButton" style="float: left;"><span wicket:id="workOutsideButtonLabel"></span></a>
+
+			</div>
+		</div>
+	</wicket:extend>
+        
+</html>

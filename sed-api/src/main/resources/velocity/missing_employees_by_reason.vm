@@ -1,0 +1,114 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	</head>
+	<body>
+		<div align="center">
+        <h3>${LABEL_LIST_ABSENTEES_DATE_TIME} ${CHECK_DATE}</h3>
+        </div>
+        <br/>
+
+		#if( ${LIST_EMPLOYEES_ON_HOLIDAYS.size()} > 0 )
+  		<h3>${LABEL_HOLIDAY}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_ON_HOLIDAYS})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+		
+		#if( ${LIST_EMPLOYEES_ON_FREE_PAID.size()} > 0 )
+		<h3>${LABEL_REPLWORK}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_ON_FREE_PAID})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+		
+		#if( ${LIST_EMPLOYEES_SICKED.size()} > 0 )
+		<h3>${LABEL_SICKLEAVE}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_SICKED})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+
+		#if( ${LIST_EMPLOYEES_WORKBREAK.size()} > 0 )
+		<h3>${LABEL_BARRIERS_TO_WORK}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_WORKBREAK})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+		
+		#if( ${LIST_EMPLOYEES_BUSTRIP.size()} > 0 )
+		<h3>${LABEL_BUSINESS_TRIP}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_BUSTRIP})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+		
+		#if( ${LIST_EMPLOYEES_WORK_AT_HOME.size()} > 0 )
+		<h3>${LABEL_WORK_FROM_HOME}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_WORK_AT_HOME})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+
+		#if( ${LIST_EMPLOYEES_STAFF_TRAINING.size()} > 0 )
+		<h3>${LABEL_TRAINING}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_STAFF_TRAINING})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+
+		#if( ${LIST_EMPLOYEES_OUT_OF_OFFICE.size()} > 0 )
+        <h3>${LABEL_OUT_OF_OFFICE}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_OUT_OF_OFFICE})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+		
+		#if( ${LIST_EMPLOYEES_DOCTOR_VISIT.size()} > 0 )
+        <h3>${LABEL_DOCTOR_VISIT}</h3>
+        #foreach($item in ${LIST_EMPLOYEES_DOCTOR_VISIT})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+
+		#if( ${LIST_EMPLOYEES.size()} > 0 )
+		<h3>${LABEL_ABSENTEES_NO_REQUEST}</h3>
+        #foreach($item in ${LIST_EMPLOYEES})
+    			$item <br/>
+		#end
+        <hr/>
+        <br/>
+        <br/>
+		#end
+		
+		<p>${LABEL_BEST_REGARDS}</p>
+        <p>${LABEL_SYSTEM_EES}</p>
+	</body>
+</html>

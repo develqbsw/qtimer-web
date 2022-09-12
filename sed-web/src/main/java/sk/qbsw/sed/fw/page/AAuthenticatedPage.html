@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:head>	
+</wicket:head>
+<wicket:extend>
+<body>
+	<div id="slidingbar-area" style="max-height: 668px;">
+			<div id="slidingbar" style="display: none;">
+				<div class="row">
+					<!-- start: SLIDING BAR FIRST COLUMN -->
+					<div class="col-md-1 col-sm-1">
+						<h2><wicket:message key="client.detail.language"></wicket:message></h2>
+						<form wicket:id="form">
+							<div class="margin-bottom-40">								
+								<span wicket:id="languageGroup">
+									<label class="radio-inline" style="color: white;">
+										<input wicket:id="language_SK" type="radio" name="optionsRadios" class="grey"/>
+										SK
+									</label>
+									<label class="radio-inline" style="color: white;">
+										<input wicket:id="language_EN" type="radio" name="optionsRadios" class="grey"/>
+										EN
+									</label>
+								</span>
+								
+							</div>
+							<br/>
+							<button wicket:id="save" class="btn btn-transparent-white" type="submit">
+								<wicket:message key="button.save"></wicket:message>
+							</button>
+						</form>
+					</div>
+					<!-- end: SLIDING BAR FIRST COLUMN -->
+					<!-- start: SLIDING BAR SECOND COLUMN -->
+					<div class="col-md-6 col-sm-6">
+						<h2><wicket:message key="application.menu.settings" /></h2>
+						<div class="row">
+							<wicket:container wicket:id="subMenuComponents">
+								<a wicket:id="subMenuItem"></a>
+							</wicket:container>
+						</div>
+					</div>
+					<!-- end: SLIDING BAR SECOND COLUMN -->
+					<!-- start: SLIDING BAR THIRD COLUMN -->
+					<div class="col-md-5 col-sm-5">
+					</div>
+					<!-- end: SLIDING BAR THIRD COLUMN -->
+				</div>
+				<div class="row">
+					<!-- start: SLIDING BAR TOGGLE BUTTON -->
+					<div class="col-md-12 text-center">
+						<a class="sb_toggle open" href="#"><em class="fa fa-chevron-up"></em></a>
+					</div>
+					<!-- end: SLIDING BAR TOGGLE BUTTON -->
+				</div>
+			</div>
+		</div>
+
+	<div class="main-wrapper">
+			<a class="closedbar inner hidden-sm hidden-xs open" href="#" style="left: -20px;">
+			</a>
+			<nav id="pageslide-left" class="pageslide inner">
+				<div class="navbar-content" wicket:id="sideMenuPanel">
+					
+				</div>
+				<div class="slide-tools">
+					<div class="col-xs-6 text-left no-padding">
+						<div class="btn btn-sm" style="cursor: default; color: #ffffff;">
+							<span wicket:id="remainingVacation" ></span>
+						</div>
+					</div>
+					<div class="col-xs-6 text-right no-padding">
+						<a class="btn btn-sm log-out text-right" wicket:id="logoutLink">
+							<em class="fa fa-power-off"></em> <wicket:message key="page.label.logout"/>
+						</a>
+					</div>
+				</div>
+			</nav>
+			<!-- end: PAGESLIDE LEFT -->
+			<!-- start: MAIN CONTAINER -->
+			<div class="main-container inner">
+				<!-- start: PAGE -->
+				<div class="main-content">
+					<!-- end: SPANEL CONFIGURATION MODAL FORM -->
+					<div class="container">
+						<!-- start: PAGE HEADER -->
+						<!-- start: TOOLBAR -->
+						<div class="toolbar row" style="margin-bottom: 21px;padding:0 20px;">
+							<div >
+								<div class="page-header">	
+									<h1>
+										<a href="#main-navbar" class="sb-toggle-left hidden-md hidden-lg margin-right-10">
+											<em class="fa fa-bars"></em>
+										</a>
+										<span wicket:id="pageTitle"></span> 
+										<small><span wicket:id="pageTitleSmall"></span></small>
+									</h1>
+								</div>
+								<div>
+									<small><span wicket:id="pageAdditionalData" class="namesday hidden-xs"></span></small>
+								</div>
+							</div>
+						</div>
+						<!-- end: TOOLBAR -->
+						<!-- end: PAGE HEADER -->
+
+						<!-- start: PAGE CONTENT -->
+						<div wicket:id="feedback">[Feedback Panel]</div>
+
+						<div class="row" wicket:id="fw_contents">
+							<div class="col-md-12">
+								<div wicket:id="container" class="panel panel-white">
+									<div class="panel-body">
+										<div wicket:id="fw_contentPanel"></div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<!-- end: PAGE CONTENT-->
+					</div>
+				</div>
+				<!-- end: PAGE -->
+			</div>
+			<!-- end: MAIN CONTAINER -->
+			
+		
+	</div>
+
+	
+	<!-- start: MAIN JAVASCRIPTS -->
+	<div wicket:id="pluginScripts"><script wicket:id="script"></script></div>
+	<!-- end: MAIN JAVASCRIPTS -->
+	
+	<!-- start: theme JAVASCRIPTS -->
+	<div wicket:id="themeScripts"><script wicket:id="script"></script></div>
+	<!-- end: theme JAVASCRIPTS -->
+	<div wicket:id="initializationCommand"><script wicket:id="script"></script></div>
+</body>
+
+</wicket:extend>
+
+</html>

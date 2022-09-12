@@ -1,0 +1,32 @@
+<html xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<wicket:extend> 
+
+	<div class="row" >
+
+		<form wicket:id="filter" role="form" >
+			
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >	
+				<select wicket:id="activityId" class="form-control"></select>				
+			</div>
+			
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >
+				<input wicket:id="search" aria-controls="sample_2" class="form-control" type="text">
+			</div>
+			
+			<div class="col-lg-3 col-md-6 col-sm-12 margin-bottom-10" >
+			</div>	
+		</form>
+	
+	</div>
+	
+	<div wicket:id="errorPanel"></div>
+	<div class="table-responsive row">
+		<div class="dataTables_wrapper no-footer">
+					
+			<div wicket:id="grid" ></div>			
+			
+		</div>
+	</div>
+	
+</wicket:extend>
+</html>
